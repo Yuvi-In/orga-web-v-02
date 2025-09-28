@@ -6,10 +6,29 @@ import { cn } from "@/styles/utils";
 
 import type { Metadata, Viewport } from "next";
 
+import Footer from "@/components/footer";
+
+import Header from "@/components/header";
+
 export const metadata: Metadata = {
-  title: "something",
-  description: "Made by a human on earth!",
-  creator: "@snelusha",
+  title: "Orgalaser Group of Companies",
+  description: "Pioneer of Production based Laser Cutting, CNC & Manufacturing Hologram Labels in Sri Lanka",
+  creator: "Yuvindu Induwara",
+  keywords: [
+    "Orgalaser",
+    "Orgalaser Group of Companies",
+    "Laser Cutting",
+    "CNC",
+    "Hologram Labels",
+    "Manufacturing",
+    "Sri Lanka",
+    "Industrial Solutions",
+    "Precision Engineering",
+    "Custom Fabrication",
+  ],
+  icons: {
+    icon: "/favicon.ico",
+  },
 };
 
 export const viewport: Viewport = {
@@ -26,7 +45,9 @@ export default function RootLayout({
   return (
     <html lang="en" suppressHydrationWarning>
       <body className={cn(geistSans.variable, geistMono.variable)}>
+        <Header />
         {children}
+        <Footer />
       </body>
     </html>
   );

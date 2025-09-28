@@ -1,5 +1,7 @@
-@import "tailwindcss";
-@import "tw-animate-css";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
 
 @custom-variant dark (&:is(.dark *));
 
@@ -43,28 +45,43 @@
 }
 
 :root {
-  --background: oklch(1 0 0);
-  --foreground: oklch(0.141 0.005 285.823);
+  /* Global Colors - The following color variables are used throughout the website. Updating them here will change the color scheme of the entire website */
+  --background-color: #f2f2f2; /* Background color for the entire website, including individual sections */
+  --default-color: #0d1f40; /* Default color used for the majority of the text content across the entire website */
+  --heading-color: #2b4980; /* Color for headings, subheadings and title throughout the website */
+  --accent-color: #ffcc00; /* Accent color that represents your brand on the website. It's used for buttons, links, and other elements that need to stand out */
+  --surface-color: #f2f2f2; /* The surface color is used as a background of boxed elements within sections, such as cards, icon boxes, or other elements that require a visual separation from the global background. */
+  --contrast-color: #2b4980; /* Contrast color for text, ensuring readability against backgrounds of accent, heading, or default colors. */
+  --accent-color-b: #f9d93a;
+}
 
-  --card: oklch(1 0 0);
-  --card-foreground: oklch(0.141 0.005 285.823);
+/* Nav Menu Colors - The following color variables are used specifically for the navigation menu. They are separate from the global colors to allow for more customization options */
+:root {
+  --nav-color: #f2f2f2; /* The default color of the main navmenu links */
+  --nav-hover-color: #ffcc00; /* Applied to main navmenu links when they are hovered over or active */
+  --nav-mobile-background-color: #f2f2f2; /* Used as the background color for mobile navigation menu */
+  --nav-dropdown-background-color: #f2f2f2; /* Used as the background color for dropdown items that appear when hovering over primary navigation items */
+  --nav-dropdown-color: #0d1f40; /* Used for navigation links of the dropdown items in the navigation menu. */
+  --nav-dropdown-hover-color: #ffcc00; /* Similar to --nav-hover-color, this color is applied to dropdown navigation links when they are hovered over. */
+}
 
-  --popover: oklch(1 0 0);
-  --popover-foreground: oklch(0.141 0.005 285.823);
+/* Color Presets - These classes override global colors when applied to any section or element, providing reuse of the sam color scheme. */
 
-  --primary: oklch(0.21 0.006 285.885);
-  --primary-foreground: oklch(0.985 0 0);
+.light-background {
+  --background-color: #f9f9f9;
+  --surface-color: #ffffff;
+}
 
-  --secondary: oklch(0.967 0.001 286.375);
-  --secondary-foreground: oklch(0.21 0.006 285.885);
+.dark-background {
+  --background-color: #0d1f40;
+  --default-color: #ffffff;
+  --heading-color: #ffffff;
+  --surface-color: #0d1f40;
+  --contrast-color: #0d1f40;
+}
 
-  --muted: oklch(0.967 0.001 286.375);
-  --muted-foreground: oklch(0.552 0.016 285.938);
-
-  --accent: oklch(0.967 0.001 286.375);
-  --accent-foreground: oklch(0.21 0.006 285.885);
-
-  --destructive: oklch(0.577 0.245 27.325);
+:root {
+  scroll-behavior: smooth;
 
   --border: oklch(0.92 0.004 286.32);
 
@@ -73,14 +90,4 @@
   --ring: oklch(0.705 0.015 286.067);
 
   --radius: 0.625rem;
-}
-
-@layer base {
-  * {
-    @apply border-border outline-ring/50;
-  }
-
-  body {
-    @apply bg-background text-foreground font-sans text-sm antialiased;
-  }
 }
