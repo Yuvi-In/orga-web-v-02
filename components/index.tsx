@@ -1,10 +1,10 @@
 export default function Index() {
   return (
     <>
-    <main className="main">
+    <main className="w-full">
         {/* Hero Section */}
         <section id="hero" className="hero section dark-background">
-          <img src="/img/hero-bg.jpg" alt="" data-aos="fade-in" />
+          <img src="/hero-bg.jpg" alt="" data-aos="fade-in" />
 
           <div className="container">
             <div

@@ -1,16 +1,43 @@
-"use client";
+"use client"; // if you’re in Next.js App Router
 
-import Link from "next/link";
-import Image from "next/image";
 import { useEffect } from "react";
 import NavBar from "./nav-bar";
 
 export default function Header() {
   useEffect(() => {
-    if (typeof window !== "undefined") return;
+    const selectBody = document.querySelector("body");
+    const selectHeader = document.querySelector("#header");
+
+    const toggleScrolled = () => {
+      if (
+        !selectHeader?.classList.contains("scroll-up-sticky") &&
+        !selectHeader?.classList.contains("sticky-top") &&
+        !selectHeader?.classList.contains("fixed-top")
+      ) return;
+
+      if (window.scrollY > 100) {
+        selectBody?.classList.add("scrolled");
+      } else {
+        selectBody?.classList.remove("scrolled");
+      }
+    };
+
+    // Attach event listeners
+    window.addEventListener("scroll", toggleScrolled);
+    window.addEventListener("load", toggleScrolled);
+
+    // Cleanup
+    return () => {
+      window.removeEventListener("scroll", toggleScrolled);
+      window.removeEventListener("load", toggleScrolled);
+    };
   }, []);
+
   return (
-    <header>
+    <header
+      id="header"
+      className="scroll-up-sticky fixed-top shadow transition-all duration-300"
+    >
       <NavBar />
     </header>
   );

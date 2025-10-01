@@ -1,7 +1,5 @@
 import "@/styles/globals.css";
 
-import { geistMono, geistSans } from "@/styles/fonts";
-
 import { cn } from "@/styles/utils";
 
 import type { Metadata, Viewport } from "next";
@@ -10,9 +8,18 @@ import Footer from "@/components/footer";
 
 import Header from "@/components/header";
 
+import { Poppins } from "next/font/google";
+
+const poppins = Poppins({
+  subsets: ["latin"],
+  weight: ["400", "600", "700"],
+  display: "swap",
+});
+
 export const metadata: Metadata = {
   title: "Orgalaser Group of Companies",
-  description: "Pioneer of Production based Laser Cutting, CNC & Manufacturing Hologram Labels in Sri Lanka",
+  description:
+    "Pioneer of Production based Laser Cutting, CNC & Manufacturing Hologram Labels in Sri Lanka",
   creator: "Yuvindu Induwara",
   keywords: [
     "Orgalaser",
@@ -44,7 +51,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(geistSans.variable, geistMono.variable)}>
+      <body className={cn(poppins.className)}suppressHydrationWarning>
         <Header />
         {children}
         <Footer />

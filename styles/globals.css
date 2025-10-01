@@ -5,6 +5,13 @@
 
 @custom-variant dark (&:is(.dark *));
 
+body.scrolled #navbar {
+  @apply bg-gray-950/80 backdrop-blur-sm shadow-lg transition-all duration-300;
+}
+body.scrolled #navbar li, body.scrolled #navbar span {
+  @apply text-white transition-all duration-300 hover:text-yellow-400;
+}
+
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
