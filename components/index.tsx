@@ -1,102 +1,23 @@
+"use client";
+import { useEffect } from "react";
+import Image from "next/image";
+import Link from "next/link";
+import Hero from "./hero";
+
 export default function Index() {
+  useEffect(() => {
+    // Add any client-side effects or subscriptions here
+  }, []);
+
   return (
-    <>
-    <main className="w-full">
-        {/* Hero Section */}
-        <section id="hero" className="hero section dark-background">
-          <img src="/hero-bg.jpg" alt="" data-aos="fade-in" />
-
-          <div className="container">
-            <div
-              className="row justify-content-center text-center"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <div className="col-xl-6 col-lg-8">
-                <h1>
-                  We are the Pioneer of Production based Laser Cutting, CNC
-                  &{" "}
-                </h1>
-                <h2 className="holo">Manufacturing Hologram Labels .</h2>
-                <h3>in Sri Lanka</h3>
-                <p>Innovation in Craftsmanship and Security</p>
-              </div>
-            </div>
-
-            <div
-              className="row gy-4 justify-content-center mt-5"
-              data-aos="fade-up"
-              data-aos-delay="200"
-            >
-              <div
-                className="col-xl-2 col-md-4"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
-                <div className="icon-box">
-                  <i className="bi bi-vector-pen"></i>
-                  <h3>
-                    <a href="">Laser Cutting</a>
-                  </h3>
-                </div>
-              </div>
-              <div
-                className="col-xl-2 col-md-4"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                <div className="icon-box">
-                  <i className="bi bi-envelope-open"></i>
-                  <h3>
-                    <a href="">Wedding Invitations</a>
-                  </h3>
-                </div>
-              </div>
-              <div
-                className="col-xl-2 col-md-4"
-                data-aos="fade-up"
-                data-aos-delay="500"
-              >
-                <div className="icon-box">
-                  <i className="bi bi-nut-fill"></i>
-                  <h3>
-                    <a href="">CNC</a>
-                  </h3>
-                </div>
-              </div>
-              <div
-                className="col-xl-2 col-md-4"
-                data-aos="fade-up"
-                data-aos-delay="600"
-              >
-                <div className="icon-box">
-                  <i className="bi bi-file-lock"></i>
-                  <h3>
-                    <a href="">Hologram Labels</a>
-                  </h3>
-                </div>
-              </div>
-              <div
-                className="col-xl-2 col-md-4"
-                data-aos="fade-up"
-                data-aos-delay="700"
-              >
-                <div className="icon-box">
-                  <i className="bi bi-printer"></i>
-                  <h3>
-                    <a href="">Digital Printing</a>
-                  </h3>
-                </div>
-              </div>
-            </div>
-          </div>
-        </section>
-        {/* /Hero Section */}
-
+      <main className="w-full bg-gray-50">
+            <Hero />
+            
+        {/* /Clients Section */}
         {/* About Section */}
         <section id="about" className="about section">
           <div className="container" data-aos="fade-up" data-aos-delay="100">
-            <div className="row_gy-4">
+            <div className="row gy-4">
               <div className="col-lg-6 order-lg-1 order-1" id="vision-box">
                 <div className="vision-box-cover">
                   <img src="/img/lasrr.gif" className="img-fluid" alt="" />
@@ -858,6 +779,7 @@ export default function Index() {
               <iframe
                 style={{ border: 0, width: "100%", height: "270px" }}
                 src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3959.6703583098556!2d79.89598237591241!3d7.047967592954241!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3ae2f74023bc0605%3A0xad198ecb82b0d132!2sOrgalaser%20Cutting!5e0!3m2!1sen!2slk!4v1733494252926!5m2!1sen!2slk"
+                suppressHydrationWarning
               ></iframe>
             </div>
             {/* End Google Maps */}
@@ -974,16 +896,6 @@ export default function Index() {
           </div>
         </section>
         {/* /Contact Section */}
-      </main>  
-
-      /* Scroll Top */
-      <a
-        href="#"
-        id="scroll-top"
-        className="scroll-top d-flex align-items-center justify-content-center"
-      >
-        <i className="bi bi-arrow-up-short"></i>
-      </a>
-    </>
+      </main>
   );
 }

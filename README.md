@@ -88,3 +88,77 @@ h6 {
   font-size: 14px;
   line-height: 24px;
 }```
+
+
+
+
+
+
+
+<div
+              className="row gy-4 justify-content-center mt-5"
+              data-aos="fade-up"
+              data-aos-delay="200"
+            >
+              <div
+                className="col-xl-2 col-md-4"
+                data-aos="fade-up"
+                data-aos-delay="300"
+              >
+                <div className="icon-box">
+                  <i className="bi bi-vector-pen"></i>
+                  <h3>
+                    <a href="">Laser Cutting</a>
+                  </h3>
+                </div>
+              </div>
+              <div
+                className="col-xl-2 col-md-4"
+                data-aos="fade-up"
+                data-aos-delay="400"
+              >
+                <div className="icon-box">
+                  <i className="bi bi-envelope-open"></i>
+                  <h3>
+                    <a href="">Wedding Invitations</a>
+                  </h3>
+                </div>
+              </div>
+              <div
+                className="col-xl-2 col-md-4"
+                data-aos="fade-up"
+                data-aos-delay="500"
+              >
+                <div className="icon-box">
+                  <i className="bi bi-nut-fill"></i>
+                  <h3>
+                    <a href="">CNC</a>
+                  </h3>
+                </div>
+              </div>
+              <div
+                className="col-xl-2 col-md-4"
+                data-aos="fade-up"
+                data-aos-delay="600"
+              >
+                <div className="icon-box">
+                  <i className="bi bi-file-lock"></i>
+                  <h3>
+                    <a href="">Hologram Labels</a>
+                  </h3>
+                </div>
+              </div>
+              <div
+                className="col-xl-2 col-md-4"
+                data-aos="fade-up"
+                data-aos-delay="700"
+              >
+                <div className="icon-box">
+                  <i className="bi bi-printer"></i>
+                  <h3>
+                    <a href="">Digital Printing</a>
+                  </h3>
+                </div>
+              </div>
+            </div>
+          </div>
