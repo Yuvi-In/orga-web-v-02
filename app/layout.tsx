@@ -1,13 +1,8 @@
 import "@/styles/globals.css";
-
 import { cn } from "@/styles/utils";
-
 import type { Metadata, Viewport } from "next";
-
 import Footer from "@/components/footer";
-
 import Header from "@/components/header";
-
 import { Poppins } from "next/font/google";
 
 const poppins = Poppins({
@@ -39,7 +34,7 @@ export const metadata: Metadata = {
 };
 
 export const viewport: Viewport = {
-  colorScheme: "only light",
+  colorScheme: "light",
   width: "device-width",
   maximumScale: 1,
 };
@@ -51,11 +46,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" suppressHydrationWarning>
-      <body className={cn(poppins.className)}suppressHydrationWarning>
+      <head>
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css"
+        />
+      </head>
+      {/* 
+        suppressHydrationWarning is intentionally set on <body> to prevent hydration mismatch warnings 
+        due to differences between server and client rendering (e.g., dynamic font loading or theming).
+      */}
+      <body className={cn(poppins.className)} suppressHydrationWarning>
         <Header />
         {children}
         <Footer />
       </body>
     </html>
   );
+
 }
