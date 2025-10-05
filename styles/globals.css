@@ -31,6 +31,22 @@ body.scrolled #navbar li, body.scrolled #navbar span {
   background-color: #818cf8; /* lighter indigo on hover */
 }
 
+/* Enables 3D flipping */
+.perspective {
+  perspective: 1000px;
+}
+
+.preserve-3d {
+  transform-style: preserve-3d;
+}
+
+.backface-hidden {
+  backface-visibility: hidden;
+}
+
+.rotate-y-180 {
+  transform: rotateY(180deg);
+}
 
 @theme inline {
   --font-sans: var(--font-geist-sans);

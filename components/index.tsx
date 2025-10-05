@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Hero from "./hero";
 import About from "./about";
+import Services from "./services";
 
 export default function Index() {
   useEffect(() => {
@@ -14,93 +15,9 @@ export default function Index() {
     <main className="h-full w-full">
       <Hero />
       <About />
-      
+      <Services />
       {/* Features Section */}
-      <section id="features" className="features section">
-        <div className="container" data-aos="fade-up" data-aos-delay="100">
-          <div className="row gy-4">
-            <div className="col-lg-6 order-lg-1 order-2">
-              <div
-                className="features-item d-flex ps-lg-3 pt-lg-0 ps-0 pt-4"
-                data-aos="fade-up"
-                data-aos-delay="200"
-              >
-                <i className="bi bi-shield-lock"></i>
-                <div>
-                  <h4>Secure to your Brand</h4>
-                  <p>
-                    Enhance the protection of your brand to ensure its integrity
-                    and reputation in the marketplace.
-                  </p>
-                </div>
-              </div>
-              {/* End Features Item*/}
-
-              <div
-                className="features-item d-flex ps-lg-3 mt-5 ps-0"
-                data-aos="fade-up"
-                data-aos-delay="300"
-              >
-                <i className="bi bi-graph-up-arrow"></i>
-                <div>
-                  <h4>Increasing the value of the Product</h4>
-                  <p>
-                    Using hologram labels can subtly enhance the value of your
-                    brand.
-                  </p>
-                </div>
-              </div>
-              {/* End Features Item*/}
-
-              <div
-                className="features-item d-flex ps-lg-3 mt-5 ps-0"
-                data-aos="fade-up"
-                data-aos-delay="400"
-              >
-                <i className="bi bi-crosshair"></i>
-                <div>
-                  <h4>Your product effectively reaches the audience.</h4>
-                  <p>
-                    Consumers appreciate hologram labels because they help them
-                    easily spot genuine products when shopping.
-                  </p>
-                </div>
-              </div>
-              {/* End Features Item*/}
-
-              <div
-                className="features-item d-flex ps-lg-3 mt-5 ps-0"
-                data-aos="fade-up"
-                data-aos-delay="500"
-              >
-                <i className="bi bi-person-fill-lock"></i>
-                <div>
-                  <h4>Protect your Customers Trust.</h4>
-                  <p>
-                    Using hologram labels effectively helps build a strong
-                    customer base by establishing trust with them.
-                  </p>
-                </div>
-              </div>
-              {/* End Features Item*/}
-            </div>
-
-            <div className="col-lg-6 order-lg-2 content order-1">
-              <h2 className="features-head">What are the outcomes</h2>
-              <p className="fst-italic">
-                when you use holgram labels in your products...
-              </p>
-              <div
-                className="features-image col-lg-6 order-lg-1 order-2"
-                data-aos="fade-up"
-                data-aos-delay="100"
-              >
-                <img src="/img/features-bg.jpg" alt="" />
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      
       {/* /Features Section */}
 
       {/* Services Section */}

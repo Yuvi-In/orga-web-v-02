@@ -203,7 +203,7 @@ export default function Footer() {
                 Our Services
               </h4>
               <ul className="space-y-3">
-                { [
+                {[
                   "Laser Cutting & Engraving",
                   "Wedding Invitations",
                   "Hologram Labels",
@@ -274,9 +274,7 @@ export default function Footer() {
         <div className="container mx-auto px-4 text-center">
           <p className="text-gray-300">
             © <span>Copyright {new Date().getFullYear()}</span>{" "}
-            <strong className="px-1 text-yellow-300">
-              Orgalaser Group
-            </strong>{" "}
+            <strong className="px-1 text-yellow-300">Orgalaser Group</strong>{" "}
             <span>All Rights Reserved</span>
           </p>
           <div className="mt-2 text-sm text-gray-400">
