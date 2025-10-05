@@ -1,154 +1,300 @@
-'use client'
+"use client";
 
-import Link from 'next/link'
-import { useEffect } from 'react'
+import Link from "next/link";
+import Image from "next/image";
+import { motion } from "framer-motion";
 
-declare global {
-    interface Window {  
-    dataLayer: any[];
-        fbq: any;
-        _fbq: any;
-        gtag: any;
-    }
-}
+const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2,
+      delayChildren: 0.1,
+    },
+  },
+};
 
-const Footer = () => {
-    useEffect(() => {
-        if (typeof window !== 'undefined') return;
-    }, []);
+const itemVariants = {
+  hidden: {
+    opacity: 0,
+    y: 30,
+  },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: "spring" as const,
+      stiffness: 100,
+      damping: 12,
+      duration: 0.6,
+    },
+  },
+};
 
+type SocialLink = {
+  href: string;
+  icon: string;
+  color: string;
+  label: string;
+};
 
-    return (
-      <footer id="footer" className="footer dark-background">
-        <div className="footer-top">
-          <div className="container">
-            <div className="row gy-4">
-              <div className="col-lg-4 col-md-6 footer-about">
-                <a href="index.html" className="logo d-flex align-items-center">
-                  <span className="sitename">Orgalaser Group</span>
-                </a>
-                <div className="footer-contact pt-3">
-                  <p>No. 64/B/1/1</p>
-                  <p>Station Road,</p>
-                  <p>Kandana</p>
-                  <p className="mt-3">
-                    <strong>Phone:</strong> <span>+94 11 223 6311</span>
-                  </p>
-                  <p>
-                    <strong>Email:</strong> <span>orgalaser@gmail.com</span>
-                  </p>
-                </div>
-                <div className="social-links d-flex mt-4">
-                  <a href="https://api.whatsapp.com/send/?phone=94765281529&text&type=phone_number&app_absent=0">
-                    <i className="bi bi-whatsapp"></i>
-                  </a>
-                  <a
-                    href="https://www.facebook.com/OrgalaserWedding1"
-                    target="_blank"
-                  >
-                    <i className="bi bi-facebook"></i>
-                  </a>
-                  <a
-                    href="https://www.instagram.com/orgalaser/"
-                    target="_blank"
-                  >
-                    <i className="bi bi-instagram"></i>
-                  </a>
-                  <a
-                    href="https://www.tiktok.com/@wedding.orgalaser"
-                    target="_blank"
-                  >
-                    <i className="bi bi-tiktok"></i>
-                  </a>
-                </div>
-              </div>
+const socialLinks: SocialLink[] = [
+  {
+    href: "https://api.whatsapp.com/send/?phone=94765281529",
+    icon: "bi-whatsapp",
+    color: "hover:text-green-400",
+    label: "WhatsApp",
+  },
+  {
+    href: "https://www.facebook.com/OrgalaserWedding1",
+    icon: "bi-facebook",
+    color: "hover:text-blue-400",
+    label: "Facebook",
+  },
+  {
+    href: "https://www.instagram.com/orgalaser/",
+    icon: "bi-instagram",
+    color: "hover:text-pink-400",
+    label: "Instagram",
+  },
+  {
+    href: "https://www.tiktok.com/@orgalaser",
+    icon: "bi-tiktok",
+    color: "hover:text-purple-400",
+    label: "TikTok",
+  },
+];
 
-              <div className="col-lg-2 col-md-3 footer-links">
-                <h4>Useful Links</h4>
-                <ul>
-                  <li>
-                    <i className="bi bi-chevron-right"></i>{" "}
-                    <Link href="/#home"> Home</Link>
-                  </li>
-                  <li>
-                    <i className="bi bi-chevron-right"></i>{" "}
-                    <Link href="/#about"> About us</Link>
-                  </li>
-                  <li>
-                    <i className="bi bi-chevron-right"></i>{" "}
-                    <Link href="/#services"> Services</Link>
-                  </li>
-                </ul>
-              </div>
+type UsefulLink = {
+  href: string;
+  label: string;
+};
 
-              <div className="col-lg-2 col-md-3 footer-links">
-                <h4>Our Services</h4>
-                <ul>
-                  <li>
-                    <i className="bi bi-chevron-right"></i>{" "}
-                    <Link href="/#services"> Laser Cutting & Engraving</Link>
-                  </li>
-                  <li>
-                    <i className="bi bi-chevron-right"></i>{" "}
-                    <Link href="/#services"> Wedding Invitations</Link>
-                  </li>
-                  <li>
-                    <i className="bi bi-chevron-right"></i>{" "}
-                    <Link href="/#services"> Hologram Labels</Link>
-                  </li>
-                  <li>
-                    <i className="bi bi-chevron-right"></i>{" "}
-                    <Link href="/#services"> CNC</Link>
-                  </li>
-                </ul>
-              </div>
+const usefulLinks: UsefulLink[] = [
+  { href: "#hero", label: "Home" },
+  { href: "#about", label: "About us" },
+  { href: "#services", label: "Services" },
+  { href: "#contact", label: "Contact" },
+];
 
-              <div className="col-lg-4 col-md-12 footer-newsletter">
-                <h4>Our Newsletter</h4>
-                <p>
-                  Subscribe to our newsletter and receive the latest news about
-                  our products and services!
-                </p>
-                <form
-                  action="forms/newsletter.php"
-                  method="post"
-                  className="php-email-form"
-                >
-                  <div className="newsletter-form">
-                    <input type="email" name="email" />
-                    <input type="submit" value="Subscribe" />
-                  </div>
-                  <div className="loading">Loading</div>
-                  <div className="error-message"></div>
-                  <div className="sent-message">
-                    Your subscription request has been sent. Thank you!
-                  </div>
-                </form>
-              </div>
-            </div>
-          </div>
-        </div>
+export default function Footer() {
+  return (
+    <footer
+      id="footer"
+      className="relative bg-gray-950/80 bg-[url('/footer-bg.jpg')] bg-cover bg-center bg-no-repeat text-white bg-blend-overlay"
+    >
+      <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/95 to-gray-950/80"></div>
 
-        <div className="copyright">
-          <div className="container text-center">
-            <p>
-              © <span>Copyright </span>{" "}
-              <strong className="sitename px-1">ORGA_IT</strong>{" "}
-              <span>All Rights Reserved</span>
-            </p>
-            <div className="credits">
-              Designed by{" "}
-              <a
-                href="https://www.facebook.com/Yuvindu1.induwara"
-                target="_blank"
+      <motion.div
+        className="footer-top relative z-10 py-16 lg:py-20"
+        variants={containerVariants}
+        initial="hidden"
+        whileInView="visible"
+        viewport={{ once: true, amount: 0.2 }}
+      >
+        <div className="container mx-auto px-4">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+            {/* Company Info */}
+            <motion.div
+              className="footer-about lg:col-span-1"
+              variants={itemVariants}
+            >
+              <Link
+                href="/"
+                className="group mb-6 flex items-center space-x-2 transition-all duration-300"
               >
-                Yuvi_In
-              </a>{" "}
-              2025
-            </div>
+                <motion.div
+                  className="flex h-12 w-12 items-center justify-center rounded-xl"
+                  whileHover={{ scale: 1.1, rotate: 5 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <Image
+                    src="/logo.png"
+                    alt="Orgalaser Logo"
+                    width={48}
+                    height={48}
+                    className="h-12 w-12 object-contain"
+                  />
+                </motion.div>
+                <span className="text-2xl font-bold text-white transition-colors duration-300 group-hover:text-yellow-300">
+                  Orgalaser
+                </span>
+              </Link>
+
+              <div className="footer-contact space-y-3 text-gray-300">
+                <motion.div
+                  className="flex items-start space-x-3"
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <i className="bi bi-geo-alt-fill mt-1 text-yellow-400"></i>
+                  <div>
+                    <p>No. 61/1/B, Station Road,</p>
+                    <p>Kandana, Sri Lanka 11320</p>
+                  </div>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-center space-x-3"
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <i className="bi bi-telephone-fill text-green-400"></i>
+                  <span>+94 11 223 6311</span>
+                </motion.div>
+
+                <motion.div
+                  className="flex items-center space-x-3"
+                  whileHover={{ x: 5 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  <i className="bi bi-envelope-fill text-blue-400"></i>
+                  <span>orgalaser@gmail.com</span>
+                </motion.div>
+              </div>
+
+              <div className="mt-6 flex space-x-4">
+                {socialLinks.map((social, index) => (
+                  <motion.a
+                    key={index}
+                    href={social.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    aria-label={social.label}
+                    className={`flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-white/5 text-white backdrop-blur-sm transition-all duration-300 ${social.color} hover:border-white/40 hover:bg-white/10 hover:shadow-lg`}
+                    whileHover={{ scale: 1.1, y: -2 }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <i className={`bi ${social.icon}`}></i>
+                  </motion.a>
+                ))}
+              </div>
+            </motion.div>
+
+            {/* Useful Links */}
+            <motion.div className="footer-links" variants={itemVariants}>
+              <h4 className="mb-6 text-xl font-semibold text-yellow-300">
+                Useful Links
+              </h4>
+              <ul className="space-y-3">
+                {usefulLinks.map((link, index) => (
+                  <motion.li
+                    key={index}
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <a
+                      href={link.href}
+                      className="group flex items-center space-x-2 text-gray-300 transition-colors duration-300 hover:text-yellow-300"
+                    >
+                      <i className="bi bi-chevron-right text-sm transition-transform duration-300 group-hover:translate-x-1"></i>
+                      <span>{link.label}</span>
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Our Services */}
+            <motion.div className="footer-links" variants={itemVariants}>
+              <h4 className="mb-6 text-xl font-semibold text-sky-500">
+                Our Services
+              </h4>
+              <ul className="space-y-3">
+                { [
+                  "Laser Cutting & Engraving",
+                  "Wedding Invitations",
+                  "Hologram Labels",
+                  "CNC Machining",
+                  "Digital Printing",
+                ].map((service, index) => (
+                  <motion.li
+                    key={index}
+                    whileHover={{ x: 5 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                  >
+                    <a
+                      href="#services"
+                      className="group flex items-center space-x-2 text-gray-300 transition-colors duration-300 hover:text-sky-500"
+                    >
+                      <i className="bi bi-chevron-right text-sm transition-transform duration-300 group-hover:translate-x-1"></i>
+                      <span>{service}</span>
+                    </a>
+                  </motion.li>
+                ))}
+              </ul>
+            </motion.div>
+
+            {/* Newsletter */}
+            <motion.div className="footer-newsletter" variants={itemVariants}>
+              <h4 className="mb-6 text-xl font-semibold text-blue-300">
+                Our Newsletter
+              </h4>
+              <p className="mb-6 text-gray-300">
+                Subscribe to our newsletter and receive the latest news about
+                our products and services!
+              </p>
+
+              <form className="space-y-4" aria-label="Newsletter form">
+                <div className="relative">
+                  <input
+                    type="email"
+                    name="email"
+                    placeholder="Your email address"
+                    required
+                    aria-label="Email address"
+                    className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-gray-400 backdrop-blur-sm transition-all duration-300 focus:border-blue-400/50 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-400/20"
+                  />
+                </div>
+                <motion.button
+                  type="submit"
+                  className="w-full rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:from-blue-600 hover:to-blue-700 hover:shadow-blue-500/25 focus:outline-none focus:ring-2 focus:ring-blue-400/50"
+                  whileHover={{ scale: 1.02, y: -1 }}
+                  whileTap={{ scale: 0.98 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                >
+                  Subscribe
+                </motion.button>
+              </form>
+            </motion.div>
           </div>
         </div>
-      </footer>
-    );
+      </motion.div>
+
+      {/* Copyright */}
+      <motion.div
+        className="relative z-10 w-full border-t border-white/10 bg-gray-950/50 py-6 backdrop-blur-sm"
+        initial={{ opacity: 0, y: 20 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        transition={{ delay: 0.5, duration: 0.6 }}
+        viewport={{ once: true }}
+      >
+        <div className="container mx-auto px-4 text-center">
+          <p className="text-gray-300">
+            © <span>Copyright {new Date().getFullYear()}</span>{" "}
+            <strong className="px-1 text-yellow-300">
+              Orgalaser Group
+            </strong>{" "}
+            <span>All Rights Reserved</span>
+          </p>
+          <div className="mt-2 text-sm text-gray-400">
+            Designed by{" "}
+            <motion.a
+              href="https://www.facebook.com/Yuvindu1.induwara"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-blue-400 transition-colors duration-300 hover:text-blue-300"
+              whileHover={{ scale: 1.05 }}
+              transition={{ type: "spring", stiffness: 300, damping: 20 }}
+            >
+              Yuvindu Induwara
+            </motion.a>{" "}
+            {new Date().getFullYear()}
+          </div>
+        </div>
+      </motion.div>
+    </footer>
+  );
 }
-export default Footer;

@@ -12,6 +12,26 @@ body.scrolled #navbar li, body.scrolled #navbar span {
   @apply text-white transition-all duration-300 hover:text-yellow-400;
 }
 
+/* Custom Scrollbar Styles */
+::-webkit-scrollbar {
+  width: 8px; /* width of the scrollbar */
+}
+
+::-webkit-scrollbar-track {
+  background: #09162e; /* track color (gray-800) */
+}
+
+::-webkit-scrollbar-thumb {
+  background-color: #6365f100; /* thumb color (indigo-500) */
+  border-radius: 9999px; /* rounded edges */
+  border: 2px solid #1f2937; /* adds space around the thumb */
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background-color: #818cf8; /* lighter indigo on hover */
+}
+
+
 @theme inline {
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
