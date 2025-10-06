@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import Flip from "./flip";
 
 const milestones = [
   {
@@ -297,108 +298,8 @@ export default function About() {
           </motion.div>
 
           {/* Vision Section */}
-          <motion.div className="mt-16 items-center justify-start lg:text-left">
-            <motion.h3
-              className="mb-8 text-left text-2xl font-semibold text-yellow-300 lg:text-3xl"
-              initial={{ opacity: 0, y: 20 }}
-              whileInView={{ opacity: 1, y: 0 }}
-              transition={{ delay: 0.6, duration: 0.6 }}
-              viewport={{ once: true }}
-            >
-              Our Vision & <span className="text-white">Mission</span>
-            </motion.h3>
-
-            <div className="mt-16 grid grid-cols-1 gap-4 text-center md:grid-cols-2 lg:grid-cols-1 lg:gap-8">
-              <motion.div
-                className="cursor-pointer rounded-2xl border border-white/10 bg-gradient-to-tr from-yellow-300/20 to-gray-950/20 p-6 backdrop-blur-sm lg:px-16 lg:py-28"
-                style={{ perspective: 1000 }}
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-                variants={visionVariants}
-                onClick={() => setIsFlipped(!isFlipped)}
-                animate={{ rotateY: isFlipped ? 180 : 0 }}
-                transition={{ duration: 0.6 }}
-                whileHover={{ scale: 1.02 }}
-              >
-                {!isFlipped ? (
-                  <div className="flex flex-col space-y-4 lg:grid lg:grid-cols-1">
-                    <motion.h4
-                      className="text-xl text-yellow-300 lg:text-left lg:text-2xl"
-                      initial={{ opacity: 0, x: -30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.2, duration: 0.6 }}
-                      viewport={{ once: true }}
-                    >
-                      Our Vision
-                    </motion.h4>
-                    <motion.div 
-                      className="hidden text-yellow-300 text-6xl text-right lg:block"
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      whileInView={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.3, duration: 0.6 }}
-                      viewport={{ once: true }}
-                    >
-                      📈
-                    </motion.div>
-                    <motion.p
-                      className="text-lg leading-relaxed text-gray-100 lg:text-left lg:text-xl lg:max-w-lg"
-                      initial={{ opacity: 0, x: 30 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.4, duration: 0.6 }}
-                      viewport={{ once: true }}
-                    >
-                      To deliver innovative laser cutting, CNC machining, and
-                      hologram solutions with unmatched quality and customer
-                      service.
-                    </motion.p>
-                    <motion.p 
-                      className="mt-8 text-xs text-gray-400 italic lg:text-right lg:text-xs"
-                      initial={{ opacity: 0 }}
-                      whileInView={{ opacity: 1 }}
-                      transition={{ delay: 0.6, duration: 0.6 }}
-                      viewport={{ once: true }}
-                    >
-                      Click here...
-                    </motion.p>
-                  </div>
-                ) : (
-                  <div 
-                    className="flex flex-col space-y-4"
-                    style={{ transform: 'rotateY(180deg)' }}
-                  >
-                    <motion.h4
-                      className="text-xl text-sky-400 lg:text-right lg:text-2xl"
-                      initial={{ opacity: 0, x: -30 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.2, duration: 0.6 }}
-                    >
-                      Our Mission
-                    </motion.h4>
-                    <motion.div 
-                      className="hidden text-sky-400 text-6xl lg:text-left lg:block"
-                      initial={{ opacity: 0, scale: 0.5 }}
-                      animate={{ opacity: 1, scale: 1 }}
-                      transition={{ delay: 0.3, duration: 0.6 }}
-                    >
-                      🎯
-                    </motion.div>
-                    <motion.p
-                      className="text-lg leading-relaxed text-gray-100 lg:text-right lg:text-xl"
-                      initial={{ opacity: 0, x: 30 }}
-                      animate={{ opacity: 1, x: 0 }}
-                      transition={{ delay: 0.4, duration: 0.6 }}
-                    >
-                      To be Sri Lanka's leading provider of precision
-                      manufacturing solutions, combining cutting-edge technology
-                      with exceptional craftsmanship to exceed our clients'
-                      expectations.
-                    </motion.p>
-                  </div>
-                )}
-              </motion.div>
-            </div>
-          </motion.div>
+          <Flip />
+          
         </motion.div>
       </div>
     </section>
