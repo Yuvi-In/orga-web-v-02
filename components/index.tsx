@@ -4,6 +4,7 @@ import Image from "next/image";
 import Link from "next/link";
 import Hero from "./hero";
 import About from "./about";
+import Outcomes from "./outcomes";
 import Services from "./services";
 
 export default function Index() {
@@ -15,90 +16,10 @@ export default function Index() {
     <main className="h-full w-full">
       <Hero />
       <About />
+      <Outcomes />
       <Services />
-      {/* Features Section */}
+     
       
-      {/* /Features Section */}
-
-      {/* Services Section */}
-      <section id="services" className="services section">
-        {/* Section Title */}
-        <div className="section-title container" data-aos="fade-up">
-          <h2>Services</h2>
-          <p>Check our Services</p>
-        </div>
-        {/* End Section Title */}
-
-        <div className="container">
-          <div className="row gy-4">
-            <div
-              className="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="100"
-            >
-              <div className="service-item position-relative">
-                <div className="icon">
-                  <i className="bi bi-vector-pen"></i>
-                </div>
-                <a href="#services" className="stretched-link">
-                  <h3>Laser Cutting & Engraving</h3>
-                </a>
-                <p>
-                  Orgalaser Hologram Pvt. Ltd. offers precision laser cutting
-                  and engraving for customized products. We ensure quick
-                  turnaround times for wedding invitations, signage, gifts, and
-                  prototypes. Trust us for your laser solutions.
-                </p>
-              </div>
-            </div>
-            {/* End Service Item */}
-
-            <div
-              className="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="300"
-            >
-              <div className="service-item position-relative">
-                <div className="icon">
-                  <i className="bi bi-nut"></i>
-                </div>
-                <a href="#services" className="stretched-link">
-                  <h3>CNC</h3>
-                </a>
-                <p>
-                  Orgalaser Hologram Pvt. Ltd. provides high-quality CNC
-                  machining solutions, including cutting, milling, drilling,
-                  prototyping, and custom manufacturing for various materials.
-                </p>
-              </div>
-            </div>
-            {/* End Service Item */}
-
-            <div
-              className="col-lg-4 col-md-6"
-              data-aos="fade-up"
-              data-aos-delay="400"
-            >
-              <div className="service-item position-relative">
-                <div className="icon">
-                  <i className="bi bi-file-lock"></i>
-                </div>
-                <a href="#services" className="stretched-link">
-                  <h3>Hologram Labels</h3>
-                </a>
-                <p>
-                  Orgalaser Hologram Pvt. Ltd. provides secure, customizable
-                  hologram labels to protect brands and products from
-                  counterfeiting across various industries.
-                </p>
-              </div>
-            </div>
-            {/* End Service Item */}
-          </div>
-        </div>
-      </section>
-      {/* /Services Section */}
-
       {/* Call To Action Section */}
       <section
         id="call-to-action"
