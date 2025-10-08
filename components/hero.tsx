@@ -2,6 +2,7 @@
 
 import { useEffect } from "react";
 import Link from "next/link";
+import { PenTool, LockKeyhole, MailOpen, Printer, Mouse, } from "lucide-react";
 
 export default function Hero() {
   useEffect(() => {
@@ -12,22 +13,22 @@ export default function Hero() {
     {
       id: 1,
       title: "Laser Cutting & CNC",
-      icon: "bi bi-vector-pen",
+      icon: PenTool,
     },
     {
       id: 2,
       title: "Hologram Labels",
-      icon: "bi bi-file-lock2",
+      icon: LockKeyhole,
     },
     {
       id: 3,
       title: "Wedding Invitations",
-      icon: "bi bi-envelope-open-fill",
+      icon: MailOpen,
     },
     {
       id: 4,
       title: "Digital Printing",
-      icon: "bi bi-printer-fill",
+      icon: Printer,
     },
   ];
 
@@ -57,28 +58,31 @@ export default function Hero() {
 
       {/* Work Section */}
       <div className="mb-10 grid grid-cols-2 gap-4 px-4 md:grid-cols-4 lg:mb-12 lg:gap-6">
-        {work.map((item) => (
-          <div
-            key={item.id}
-            className="group flex transform flex-col items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-3 py-3 backdrop-blur-sm transition-all duration-300 ease-in-out hover:border-yellow-300/50 hover:bg-yellow-300/20 hover:shadow-lg hover:shadow-yellow-300/20 lg:px-6 lg:py-5"
-          >
-            <div className="text-2xl text-white transition-colors duration-300 group-hover:text-yellow-300 md:text-3xl lg:text-4xl">
-              <i className={item.icon}></i>
+        {work.map((item) => {
+          const IconComponent = item.icon;
+          return (
+            <div
+              key={item.id}
+              className="group flex transform flex-col items-center justify-center rounded-2xl border border-white/20 bg-white/10 px-3 py-3 backdrop-blur-sm transition-all duration-300 ease-in-out hover:border-yellow-300/50 hover:bg-yellow-300/20 hover:shadow-lg hover:shadow-yellow-300/20 hover:scale-105 lg:px-6 lg:py-5"
+            >
+              <div className="text-white transition-all duration-300 ease-in-out group-hover:text-yellow-300 group-hover:-translate-y-1 group-hover:scale-110 group-hover:rotate-6">
+                <IconComponent size={32} className="md:w-8 md:h-8 lg:w-10 lg:h-10" />
+              </div>
+              <h4 className="mt-2 text-xs font-semibold text-white transition-all duration-300 ease-in-out group-hover:text-yellow-100 group-hover:translate-y-0.5 md:text-sm lg:text-base xl:text-lg">
+                {item.title}
+              </h4>
             </div>
-            <h4 className="mt-2 text-xs font-semibold text-white transition-colors duration-300 group-hover:text-yellow-100 md:text-sm lg:text-base xl:text-lg">
-              {item.title}
-            </h4>
-          </div>
-        ))}
+          );
+        })}
       </div>
 
       {/* Down Arrow */}
       <Link
         href="#about"
-        className="animate-bounce text-3xl text-white transition-colors duration-300 ease-in-out hover:text-yellow-300 md:text-4xl"
+        className="animate-bounce text-white transition-colors duration-300 ease-in-out hover:text-yellow-300"
         aria-label="Scroll to About section"
       >
-        <i className="bi bi-arrow-down-circle"></i>
+        <Mouse size={32} className="md:w-10 md:h-10" />
       </Link>
     </section>
   );

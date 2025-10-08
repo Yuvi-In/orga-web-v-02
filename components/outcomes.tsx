@@ -1,30 +1,31 @@
 "use client";
 
 import { motion } from "framer-motion";
+import { Shield, ChartSpline, Target, Lock, Sparkles } from "lucide-react";
 
 const features = [
   {
-    icon: "🛡️",
+    icon: Shield,
     title: "Secure to your Brand",
     description:
       "Enhance the protection of your brand to ensure its integrity and reputation in the marketplace.",
     delay: 0.2,
   },
   {
-    icon: "📈",
+    icon: ChartSpline,
     title: "Increasing the value of the Product",
     description: "Using hologram labels can subtly enhance the value of your brand.",
     delay: 0.3,
   },
   {
-    icon: "🎯",
+    icon: Target,
     title: "Your product effectively reaches the audience",
     description:
       "Consumers appreciate hologram labels because they help them easily spot genuine products when shopping.",
     delay: 0.4,
   },
   {
-    icon: "🔒",
+    icon: Lock,
     title: "Protect your Customers Trust",
     description:
       "Using hologram labels effectively helps build a strong customer base by establishing trust with them.",
@@ -178,7 +179,7 @@ export default function Outcomes() {
                     transition: { duration: 0.2 },
                   }}
                 >
-                  {feature.icon}
+                  <feature.icon className="h-6 w-6 text-yellow-300" />
                 </motion.div>
 
                 {/* Content */}
@@ -276,7 +277,7 @@ export default function Outcomes() {
 
               {/* Floating Badge */}
               <motion.div
-                className="absolute bottom-4 right-4 rounded-full bg-yellow-300/70 border border-yellow-400/90 px-4 py-2 text-sm font-semibold text-black backdrop-blur-sm"
+                className="absolute bottom-4 right-4 flex items-center gap-2 rounded-full bg-yellow-300/70 border border-yellow-400/90 px-4 py-2 text-sm font-semibold text-black backdrop-blur-sm"
                 initial={{ opacity: 0, scale: 0, rotate: -45 }}
                 whileInView={{ opacity: 1, scale: 1, rotate: 0 }}
                 transition={{
@@ -292,7 +293,8 @@ export default function Outcomes() {
                   transition: { duration: 0.2 },
                 }}
               >
-                ✨ Premium Quality
+                <Sparkles className="h-4 w-4" />
+                Premium Quality
               </motion.div>
             </motion.div>
 

@@ -2,6 +2,7 @@
 
 import { motion } from "framer-motion";
 import { useState } from "react";
+import { Calendar } from "lucide-react";
 import Flip from "./flip";
 
 const milestones = [
@@ -249,15 +250,15 @@ export default function About() {
                   viewport={{ once: true }}
                 >
                   <span className="flex items-center font-semibold text-yellow-300">
-                    <motion.span
-                      className="mr-2 text-sm"
+                    <motion.div
+                      className="mr-2"
                       initial={{ rotate: -180, opacity: 0 }}
                       whileInView={{ rotate: 0, opacity: 1 }}
                       transition={{ delay: index * 0.1 + 0.5, duration: 0.6 }}
                       viewport={{ once: true }}
                     >
-                      📅
-                    </motion.span>
+                      <Calendar className="h-4 w-4" />
+                    </motion.div>
                     {item.date}
                   </span>
                   <motion.div
