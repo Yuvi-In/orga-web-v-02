@@ -8,6 +8,7 @@ import Outcomes from "./outcomes";
 import Services from "./services";
 import CallTo from "./callToAction";
 import Portfolio from "./portfolio";
+import Stats from "./stats";
 
 export default function Index() {
   useEffect(() => {
@@ -22,127 +23,9 @@ export default function Index() {
       <Services />
       <CallTo />
       <Portfolio />
+      <Stats />
 
       
-      {/* Stats Section */}
-      <section id="stats" className="stats section">
-        <div className="container" data-aos="fade-up" data-aos-delay="100">
-          <div className="row gy-4 align-items-center justify-content-between">
-            <div className="col-lg-5">
-              <img src="/img/stats-img.png" alt="" className="img-fluid" />
-            </div>
-
-            <div className="col-lg-6">
-              <h3 className="fw-bold fs-2 mb-3">
-                We are honored to serve high-quality and distinguished products.
-              </h3>
-              <p>
-                We are delighted to provide you with outstanding products that
-                not only meet the highest quality standards but also elevate
-                your experience. Our commitment to excellence is what sets us
-                apart, and we invite you to discover the difference for
-                yourself!
-              </p>
-
-              <div className="row gy-4">
-                <div className="col-lg-6">
-                  <div className="stats-item d-flex">
-                    <i className="bi bi-building-up"></i>
-                    <div>
-                      <span
-                        data-purecounter-start="0"
-                        data-purecounter-end="14"
-                        data-purecounter-duration="1"
-                        className="purecounter"
-                        suppressHydrationWarning
-                      >
-                        0
-                      </span>
-                      <p>
-                        <strong>Years of dedicated service </strong>
-                        <span>
-                          is a remarkable milestone worth celebrating.
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {/* End Stats Item */}
-
-                <div className="col-lg-6">
-                  <div className="stats-item d-flex">
-                    <i className="bi bi-journal-richtext flex-shrink-0"></i>
-                    <div>
-                      <span
-                        data-purecounter-start="0"
-                        data-purecounter-end="1020"
-                        data-purecounter-duration="1"
-                        className="purecounter"
-                        suppressHydrationWarning
-                      >
-                        0
-                      </span>
-                      <p>
-                        <strong>We have accomplished </strong>{" "}
-                        <span>a remarkable Projects under OneRoof!</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {/* End Stats Item */}
-
-                <div className="col-lg-6">
-                  <div className="stats-item d-flex">
-                    <i className="bi bi-people-fill"></i>
-                    <div>
-                      <span
-                        data-purecounter-start="0"
-                        data-purecounter-end="453"
-                        data-purecounter-duration="1"
-                        className="purecounter"
-                        suppressHydrationWarning
-                      >
-                        0
-                      </span>
-                      <p>
-                        <strong>Clients entrusting </strong>{" "}
-                        <span>their partnership with us</span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {/* End Stats Item */}
-
-                <div className="col-lg-6">
-                  <div className="stats-item d-flex">
-                    <i className="bi bi-bricks"></i>
-                    <div>
-                      <span
-                        data-purecounter-start="0"
-                        data-purecounter-end="15"
-                        data-purecounter-duration="1"
-                        className="purecounter"
-                        suppressHydrationWarning
-                      >
-                        0
-                      </span>
-                      <p>
-                        <strong>Hard Workers</strong>{" "}
-                        <span>
-                          delivers precision, innovation, and quality products.
-                        </span>
-                      </p>
-                    </div>
-                  </div>
-                </div>
-                {/* End Stats Item */}
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-      {/* /Stats Section */}
-
       {/* Contact Section */}
       <section id="contact" className="contact section">
         {/* Section Title */}
