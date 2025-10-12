@@ -7,28 +7,32 @@ import Flip from "./flip";
 
 const milestones = [
   {
-    date: "Oct 2011",
+    year: "2011",
     title: "Founded company",
     description:
       "Orgalaser was established with a vision to revolutionize laser cutting in Sri Lanka.",
+    icon: <Calendar className="w-6 h-6 text-yellow-400" />,
   },
   {
-    date: "Aug 2018",
+    year: "2018",
     title: "Expand as Production",
     description:
       "Established as the first production-based laser machining company in our state, known for precision and quality.",
+    icon: <Calendar className="w-6 h-6 text-yellow-400" />,
   },
   {
-    date: "Feb 2020 - Jan 2023",
+    year: "2020 - 2022",
     title: "COVID-19 Recovery",
     description:
       "As the world recovers from the pandemic, we adapted our operations to meet new challenges and demands.",
+    icon: <Calendar className="w-6 h-6 text-yellow-400" />,
   },
   {
-    date: "Jan 2024",
+    year: "2024",
     title: "#1 Hologram Manufacturer",
     description:
       "Orgalaser is recognized as the leading hologram manufacturer in Sri Lanka, setting industry standards for quality and innovation.",
+    icon: <Calendar className="w-6 h-6 text-yellow-400" />,
   },
 ];
 
@@ -101,25 +105,24 @@ const descriptionVariants = {
 const milestoneCardVariants = {
   hidden: {
     opacity: 0,
-    y: 80,
-    rotateX: -15,
+    x: -100,
+    scale: 0.8,
   },
   visible: (index: number) => ({
     opacity: 1,
-    y: 0,
-    rotateX: 0,
+    x: 0,
+    scale: 1,
     transition: {
       type: "spring" as const,
       stiffness: 100,
       damping: 15,
-      delay: index * 0.15,
+      delay: index * 0.2,
       duration: 0.8,
     },
   }),
   hover: {
     y: -8,
-    scale: 1.02,
-    rotateX: 5,
+    scale: 1.05,
     transition: {
       type: "spring" as const,
       stiffness: 300,
@@ -220,87 +223,131 @@ export default function About() {
           variants={containerVariants}
         >
           <motion.h3
-            className="mb-8 text-center text-2xl font-semibold text-yellow-300 lg:text-3xl"
+            className="mb-12 text-center text-2xl font-semibold text-yellow-300 lg:text-3xl"
             variants={itemVariants}
           >
             Our Journey
           </motion.h3>
 
-          <motion.div
-            className="grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-4 lg:gap-8"
-            variants={containerVariants}
-          >
-            {milestones.map((item, index) => (
-              <motion.div
-                key={index}
-                className="group relative rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-300 hover:border-yellow-300/30 hover:bg-white/10 hover:shadow-lg hover:shadow-yellow-300/20"
-                variants={milestoneCardVariants}
-                custom={index}
-                whileHover="hover"
-                initial="hidden"
-                whileInView="visible"
-                viewport={{ once: true, amount: 0.3 }}
-              >
-                {/* Date */}
+          {/* Desktop Timeline (horizontal) */}
+          <div className="relative hidden md:block mb-16">
+            {/* Timeline line */}
+            <div className="absolute top-20 left-0 w-full h-0.5 bg-yellow-300/50" />
+
+            {/* Milestones */}
+            <div className="flex justify-between items-start px-4 pt-12 lg:px-8">
+              {milestones.map((item, index) => (
                 <motion.div
-                  className="mb-4 flex items-center space-x-2"
-                  initial={{ opacity: 0, x: -20 }}
-                  whileInView={{ opacity: 1, x: 0 }}
-                  transition={{ delay: index * 0.1 + 0.3, duration: 0.5 }}
-                  viewport={{ once: true }}
+                  key={index}
+                  custom={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  whileHover="hover"
+                  viewport={{ once: true, amount: 0.3 }}
+                  variants={milestoneCardVariants}
+                  className="relative flex-1 max-w-xs mx-2"
                 >
-                  <span className="flex items-center font-semibold text-yellow-300">
-                    <motion.div
-                      className="mr-2"
-                      initial={{ rotate: -180, opacity: 0 }}
-                      whileInView={{ rotate: 0, opacity: 1 }}
-                      transition={{ delay: index * 0.1 + 0.5, duration: 0.6 }}
-                      viewport={{ once: true }}
+                  {/* Icon node */}
+                  <div className="flex justify-center mb-4">
+                    <motion.div 
+                      className="flex items-center justify-center w-16 h-16 rounded-full bg-white/10 border-2 border-white/20 backdrop-blur-sm z-10 relative"
+                      whileHover={{ 
+                        scale: 1.15,
+                        borderColor: "rgba(253, 224, 71, 0.5)",
+                        backgroundColor: "rgba(253, 224, 71, 0.2)",
+                        transition: { duration: 0.3 }
+                      }}
                     >
-                      <Calendar className="h-4 w-4" />
+                      {item.icon}
                     </motion.div>
-                    {item.date}
-                  </span>
-                  <motion.div
-                    className="flex-1 border-t border-gray-600 group-hover:border-yellow-300/50"
-                    initial={{ scaleX: 0 }}
-                    whileInView={{ scaleX: 1 }}
-                    transition={{ delay: index * 0.1 + 0.4, duration: 0.8 }}
-                    viewport={{ once: true }}
-                  ></motion.div>
+                  </div>
+
+                  {/* Card */}
+                  <motion.div 
+                    className="group rounded-2xl border border-white/20 bg-white/10 p-6 backdrop-blur-sm transition-all duration-300 ease-in-out hover:border-yellow-300/50 hover:bg-yellow-300/20 hover:shadow-lg hover:shadow-yellow-300/20"
+                    whileHover={{
+                      scale: 1.05,
+                    }}
+                  >
+                    <motion.h3 
+                      className="text-xl font-bold text-yellow-300 mb-2 transition-colors duration-300 group-hover:text-white"
+                      whileHover={{ scale: 1.05 }}
+                    >
+                      {item.year}
+                    </motion.h3>
+                    <p className="text-base font-semibold text-white mb-2 transition-colors duration-300 group-hover:text-yellow-100">
+                      {item.title}
+                    </p>
+                    <p className="text-sm text-white/80 leading-relaxed transition-colors duration-300 group-hover:text-white/90">
+                      {item.description}
+                    </p>
+                  </motion.div>
                 </motion.div>
+              ))}
+            </div>
+          </div>
 
-                {/* Title */}
-                <motion.h4
-                  className="mb-3 text-lg font-bold text-white group-hover:text-yellow-100"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 + 0.4, duration: 0.6 }}
-                  viewport={{ once: true }}
+          {/* Mobile Timeline (vertical) */}
+          <div className="relative md:hidden mb-16">
+            {/* Vertical timeline line */}
+            <div className="absolute left-8 top-0 bottom-0 w-0.5 bg-yellow-300/50" />
+
+            {/* Milestones */}
+            <div className="space-y-8 px-4">
+              {milestones.map((item, index) => (
+                <motion.div
+                  key={index}
+                  custom={index}
+                  initial="hidden"
+                  whileInView="visible"
+                  viewport={{ once: true, amount: 0.3 }}
+                  variants={milestoneCardVariants}
+                  className="relative flex items-start gap-6"
                 >
-                  {item.title}
-                </motion.h4>
+                  {/* Icon node */}
+                  <motion.div 
+                    className="flex items-center justify-center w-16 h-16 rounded-full bg-white/10 border-2 border-white/20 backdrop-blur-sm z-10 flex-shrink-0"
+                    whileHover={{ 
+                      scale: 1.15,
+                      borderColor: "rgba(253, 224, 71, 0.5)",
+                      backgroundColor: "rgba(253, 224, 71, 0.2)",
+                      transition: { duration: 0.3 }
+                    }}
+                  >
+                    {item.icon}
+                  </motion.div>
 
-                {/* Description */}
-                <motion.p
-                  className="text-sm leading-relaxed text-gray-300 group-hover:text-gray-200"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  transition={{ delay: index * 0.1 + 0.5, duration: 0.6 }}
-                  viewport={{ once: true }}
-                >
-                  {item.description}
-                </motion.p>
-
-                {/* Hover Effect Accent */}
-                <div className="absolute -inset-px -z-10 rounded-2xl bg-gradient-to-r from-yellow-300/20 to-green-300/20 opacity-0 transition-opacity duration-300 group-hover:opacity-100"></div>
-              </motion.div>
-            ))}
-          </motion.div>
+                  {/* Card */}
+                  <motion.div 
+                    className="group flex-1 rounded-2xl border border-white/20 bg-white/10 p-5 backdrop-blur-sm transition-all duration-300 ease-in-out hover:border-yellow-300/50 hover:bg-yellow-300/20 hover:shadow-lg hover:shadow-yellow-300/20"
+                    whileHover={{
+                      scale: 1.02,
+                    }}
+                  >
+                    <h3 className="text-lg font-bold text-yellow-300 mb-1 transition-colors duration-300 group-hover:text-white">
+                      {item.year}
+                    </h3>
+                    <p className="text-base font-semibold text-white mb-2 transition-colors duration-300 group-hover:text-yellow-100">
+                      {item.title}
+                    </p>
+                    <p className="text-sm text-white/80 leading-relaxed transition-colors duration-300 group-hover:text-white/90">
+                      {item.description}
+                    </p>
+                  </motion.div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
 
           {/* Vision Section */}
-          <Flip />
-          
+          <motion.div
+            variants={visionVariants}
+            initial="hidden"
+            whileInView="visible"
+            viewport={{ once: true, amount: 0.3 }}
+          >
+            <Flip />
+          </motion.div>
         </motion.div>
       </div>
     </section>
