@@ -144,7 +144,6 @@ export default function ContactUs() {
     setFormStatus("loading");
 
     try {
-      // Replace this with your actual API endpoint or email service
       const response = await fetch("/api/contact", {
         method: "POST",
         headers: {
@@ -162,8 +161,6 @@ export default function ContactUs() {
           subject: "",
           message: "",
         });
-        // Reset form element
-        e.currentTarget.reset();
         // Reset status after 5 seconds
         setTimeout(() => setFormStatus("idle"), 5000);
       } else {
