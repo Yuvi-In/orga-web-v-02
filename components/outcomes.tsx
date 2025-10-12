@@ -135,7 +135,7 @@ export default function Outcomes() {
   return (
     <section
       id="outcomes"
-      className="relative flex min-h-screen flex-col items-center justify-center bg-gray-950/80 bg-[url('/services-bg.jpg')] bg-cover bg-center bg-no-repeat text-white bg-blend-overlay"
+      className="relative flex min-h-screen flex-col items-center justify-center bg-gray-950/80 bg-[url('/images/services-bg.jpg')] bg-cover bg-center bg-no-repeat text-white bg-blend-overlay"
     >
       <div className="container mx-auto px-4 py-28 lg:py-28">
         <motion.div
@@ -257,7 +257,7 @@ export default function Outcomes() {
               transition={{ duration: 0.3 }}
             >
               <motion.img
-                src="/services-bg.jpg"
+                src="/images/services-bg.jpg"
                 alt="Hologram Features"
                 className="h-auto w-full rounded-2xl object-cover shadow-2xl"
                 initial={{ scale: 1.1, opacity: 0 }}

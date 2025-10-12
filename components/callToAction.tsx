@@ -13,7 +13,7 @@ export default function CallTo() {
             {/* Enhanced Background with Multiple Layers */}
             <div className="absolute inset-0">
                 <img 
-                    src="/about.gif" 
+                    src="/images/about.gif" 
                     className="w-full h-full object-cover opacity-40" 
                     alt="Background" 
                 />
@@ -168,33 +168,124 @@ export default function CallTo() {
                         </motion.a>
                     </motion.div>
 
-                    {/* Enhanced Stats or Features */}
+                    {/* Trusted By Section */}
                     <motion.div
-                        className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12"
-                        initial={{ opacity: 0, y: 30 }}
+                        className="mt-20 mb-20 pt-12 border-t border-blue-900/30 overflow-hidden"
+                        initial={{ opacity: 0, y: 20 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.8, delay: 0.6 }}
                     >
-                        {[
-                            { number: "500+", label: "Projects Completed" },
-                            { number: "50+", label: "Happy Clients" },
-                            { number: "10+", label: "Years Experience" }
-                        ].map((stat, index) => (
-                            <motion.div
-                                key={index}
-                                className="text-center"
-                                initial={{ opacity: 0, y: 20 }}
-                                animate={{ opacity: 1, y: 0 }}
-                                transition={{ duration: 0.6, delay: 0.7 + index * 0.1 }}
-                            >
-                                <div className="text-3xl md:text-4xl font-bold text-cyan-300 mb-2">
-                                    {stat.number}
-                                </div>
-                                <div className="text-blue-200 font-medium">
-                                    {stat.label}
-                                </div>
-                            </motion.div>
-                        ))}
+                        <p className="text-blue-200/70 text-sm uppercase tracking-wider mb-8 font-medium">
+                            Trusted by Industry Leaders
+                        </p>
+                        
+                        {/* Horizontal Scrolling Logos */}
+                        <div className="relative">
+                            {/* Gradient Overlays */}
+                            <div className="absolute left-0 top-0 bottom-0 w-20 z-10 pointer-events-none"></div>
+                            <div className="absolute right-0 top-0 bottom-0 w-20 z-10 pointer-events-none"></div>
+                            
+                            {/* Scrolling Container */}
+                            <div className="flex">
+                                <motion.div
+                                    className="flex gap-12 pr-12"
+                                    animate={{
+                                        x: [0, -1800],
+                                    }}
+                                    transition={{
+                                        x: {
+                                            repeat: Infinity,
+                                            repeatType: "loop",
+                                            duration: 30,
+                                            ease: "linear",
+                                        },
+                                    }}
+                                >
+                                    {/* First set of logos */}
+                                    {[
+                                        { name: "Client 1", logo: "/clients/slon.svg" },
+                                        { name: "Client 2", logo: "/clients/finlays.png" },
+                                        { name: "Client 3", logo: "/clients/ctl.png" },
+                                        { name: "Client 4", logo: "/clients/acl.png" },
+                                        { name: "Client 5", logo: "/clients/samudra.png" },
+                                        { name: "Client 6", logo: "/clients/cic.webp" },
+                                        { name: "Client 7", logo: "/clients/amw.png" },
+                                        { name: "Client 8", logo: "/clients/empireteas.webp" },
+                                        { name: "Client 9", logo: "/clients/ics.png" },
+                                        { name: "Client 10", logo: "/clients/cbm.png" },
+                                    ].map((client, index) => (
+                                        <div
+                                            key={`logo-1-${index}`}
+                                            className="group relative flex-shrink-0 w-40 h-24 flex items-center justify-center"
+                                        >
+                                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                            <img
+                                                src={client.logo}
+                                                alt={client.name}
+                                                className="relative z-10 w-full h-full object-contain filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                                                onError={(e) => {
+                                                    e.currentTarget.style.display = 'none';
+                                                    const fallback = e.currentTarget.parentElement?.querySelector('.fallback');
+                                                    if (fallback) fallback.classList.remove('hidden');
+                                                }}
+                                            />
+                                            <div className="fallback hidden relative z-10 w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-900/50 to-cyan-900/50 rounded-lg border border-blue-700/30 backdrop-blur-sm">
+                                                <span className="text-blue-300 font-semibold text-sm">{client.name}</span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </motion.div>
+                                
+                                {/* Duplicate set for seamless loop */}
+                                <motion.div
+                                    className="flex gap-12 pr-12"
+                                    animate={{
+                                        x: [0, -1800],
+                                    }}
+                                    transition={{
+                                        x: {
+                                            repeat: Infinity,
+                                            repeatType: "loop",
+                                            duration: 30,
+                                            ease: "linear",
+                                        },
+                                    }}
+                                >
+                                    {[
+                                        { name: "Client 1", logo: "/clients/slon.svg" },
+                                        { name: "Client 2", logo: "/clients/finlays.png" },
+                                        { name: "Client 3", logo: "/clients/ctl.png" },
+                                        { name: "Client 4", logo: "/clients/acl.png" },
+                                        { name: "Client 5", logo: "/clients/samudra.png" },
+                                        { name: "Client 6", logo: "/clients/cic.webp" },
+                                        { name: "Client 7", logo: "/clients/amw.png" },
+                                        { name: "Client 8", logo: "/clients/empireteas.webp" },
+                                        { name: "Client 9", logo: "/clients/ics.png" },
+                                        { name: "Client 10", logo: "/clients/cbm.png" },
+                                    ].map((client, index) => (
+                                        <div
+                                            key={`logo-2-${index}`}
+                                            className="group relative flex-shrink-0 w-40 h-24 flex items-center justify-center"
+                                        >
+                                            <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
+                                            <img
+                                                src={client.logo}
+                                                alt={client.name}
+                                                className="relative z-10 w-full h-full object-contain filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                                                onError={(e) => {
+                                                    e.currentTarget.style.display = 'none';
+                                                    const fallback = e.currentTarget.parentElement?.querySelector('.fallback');
+                                                    if (fallback) fallback.classList.remove('hidden');
+                                                }}
+                                            />
+                                            <div className="fallback hidden relative z-10 w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-900/50 to-cyan-900/50 rounded-lg border border-blue-700/30 backdrop-blur-sm">
+                                                <span className="text-blue-300 font-semibold text-sm">{client.name}</span>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </motion.div>
+                            </div>
+                        </div>
                     </motion.div>
 
                     {/* Decorative Elements */}

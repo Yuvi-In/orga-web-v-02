@@ -28,7 +28,7 @@ export default function NavBar() {
           {/* Logo */}
           <Link href="/" className="flex items-center gap-x-2">
             <Image
-              src="/logo.png"
+              src="/images/logo.png"
               alt="Orgalaser Logo"
               width={60}
               height={50}

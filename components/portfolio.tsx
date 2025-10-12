@@ -8,7 +8,7 @@ export default function Portfolio() {
   const portfolioItems = [
     {
       id: 1,
-      image: "/img/masonry-portfolio/masonry-portfolio-1.jpg",
+      image: "/portfolio/portfolio-1.jpg",
       title: "Wedding Invitations",
       description: "Celebrate love with a beautiful wedding invitation!",
       category: "filter-app",
@@ -16,7 +16,7 @@ export default function Portfolio() {
     },
     {
       id: 2,
-      image: "/img/masonry-portfolio/masonry-portfolio-2.jpg",
+      image: "/portfolio/portfolio-4.jpg",
       title: "Wood CNC",
       description: "Precision wood CNC cutting and engraving services.",
       category: "filter-product",
@@ -24,7 +24,7 @@ export default function Portfolio() {
     },
     {
       id: 3,
-      image: "/img/masonry-portfolio/masonry-portfolio-3.jpg",
+      image: "/portfolio/portfolio-7.jpg",
       title: "Stock Hologram Labels",
       description:
         "Stock holograms offer a secure, cost-effective anti-counterfeiting solution.",
@@ -33,7 +33,7 @@ export default function Portfolio() {
     },
     {
       id: 4,
-      image: "/img/masonry-portfolio/masonry-portfolio-4.jpg",
+      image: "/portfolio/portfolio-2.jpg",
       title: "Souvenirs and Handicrafts",
       description:
         "Find unique handcrafted souvenirs that embody tradition and artistry.",
@@ -42,7 +42,7 @@ export default function Portfolio() {
     },
     {
       id: 5,
-      image: "/img/masonry-portfolio/masonry-portfolio-5.jpg",
+      image: "/portfolio/portfolio-5.jpg",
       title: "Acrylic CNC Engraving",
       description: "Precision acrylic cutting and engraving services.",
       category: "filter-product",
@@ -50,7 +50,7 @@ export default function Portfolio() {
     },
     {
       id: 6,
-      image: "/img/masonry-portfolio/masonry-portfolio-6.jpg",
+      image: "/portfolio/portfolio-8.jpg",
       title: "Customized Hologram Labels",
       description: "Custom holograms for brand authenticity.",
       category: "filter-branding",
@@ -58,7 +58,7 @@ export default function Portfolio() {
     },
     {
       id: 7,
-      image: "/img/masonry-portfolio/masonry-portfolio-7.jpg",
+      image: "/portfolio/portfolio-3.jpg",
       title: "Leather Cutting & Marking",
       description:
         "We provide precise leather cutting and marking for detailed, high-quality designs.",
@@ -67,7 +67,7 @@ export default function Portfolio() {
     },
     {
       id: 8,
-      image: "/img/masonry-portfolio/masonry-portfolio-8.jpg",
+      image: "/portfolio/portfolio-6.jpg",
       title: "Sign Boards",
       description: "Boost brand visibility with sleek, durable acrylic signs.",
       category: "filter-product",
@@ -75,7 +75,7 @@ export default function Portfolio() {
     },
     {
       id: 9,
-      image: "/img/masonry-portfolio/masonry-portfolio-9.jpg",
+      image: "/portfolio/portfolio-9.jpg",
       title: "Hologram Labels",
       description: "More Hologram Labels",
       category: "filter-branding",
@@ -106,7 +106,7 @@ export default function Portfolio() {
       {/* Background Image with Overlay */}
       <div className="absolute inset-0">
         <img
-          src="/portfolio/portfolio-bg.jpg"
+          src="/images/portfolio-bg.jpg"
           className="w-full h-full object-cover opacity-50"
           alt="Portfolio Background"
         />

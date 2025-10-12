@@ -177,7 +177,7 @@ export default function ContactUs() {
   return (
     <section
       id="contact"
-      className="relative flex min-h-screen flex-col items-center justify-center bg-gray-950/80 bg-[url('/footer-bg.jpg')] bg-cover bg-center bg-no-repeat text-white bg-blend-overlay"
+      className="relative flex min-h-screen flex-col items-center justify-center bg-gray-950/80 bg-[url('/images/footer-bg.jpg')] bg-cover bg-center bg-no-repeat text-white bg-blend-overlay"
     >
       <div className="container mx-auto px-4 py-28 lg:py-28">
         <motion.div

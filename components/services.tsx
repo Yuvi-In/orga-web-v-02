@@ -75,7 +75,7 @@ export default function Services() {
                 {/* Background Image with Overlay */}
                 <div className="absolute inset-0">
                     <img 
-                        src="/service-bg.gif" 
+                        src="/images/service-bg.gif" 
                         className="w-full h-full object-cover opacity-90" 
                         alt="Services Background" 
                     />
@@ -245,32 +245,6 @@ export default function Services() {
                         })}
                     </div>
                 </div>
-
-                {/* Bottom CTA Section */}
-                <motion.div
-                    className="container mx-auto px-4 mt-20 text-center"
-                    initial={{ opacity: 0, y: 30 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.8, delay: 0.8 }}
-                >
-                    <div className="bg-gradient-to-r from-blue-600 via-purple-600 to-blue-600 rounded-2xl p-8 text-white border border-blue-500/20 backdrop-blur-sm">
-                        <h3 className="text-2xl md:text-3xl font-bold mb-4">
-                            Ready to Transform Your Ideas?
-                        </h3>
-                        <p className="text-blue-100 mb-6 max-w-2xl mx-auto">
-                            Let's discuss your project and find the perfect solution for your needs
-                        </p>
-                        <motion.a
-                            href="#contact"
-                            className="inline-flex items-center px-8 py-4 bg-white/10 text-white border border-white/20 font-semibold rounded-full hover:bg-white/20 backdrop-blur-sm transition-all duration-300 shadow-lg"
-                            whileHover={{ scale: 1.05 }}
-                            whileTap={{ scale: 0.95 }}
-                        >
-                            Get Started Today
-                            <ChevronRight className="w-5 h-5 ml-2" />
-                        </motion.a>
-                    </div>
-                </motion.div>
             </div>
         </motion.section>
     );

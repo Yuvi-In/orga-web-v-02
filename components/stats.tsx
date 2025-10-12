@@ -1,254 +1,204 @@
 "use client";
 
-import { motion } from "framer-motion";
-import { Building2, FileText, Users, Hammer, TrendingUp } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
+import Image from "next/image";
+import { Building2, Users2, Layers, Briefcase } from "lucide-react";
 
-export default function Stats() {
+// Custom hook for counting animation
+const useCountUp = (end: number, duration: number = 2000, start: number = 0) => {
+  const [count, setCount] = useState(start);
+  const [isInView, setIsInView] = useState(false);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsInView(true);
+        }
+      },
+      { threshold: 0.3 }
+    );
+
+    if (ref.current) {
+      observer.observe(ref.current);
+    }
+
+    return () => {
+      if (ref.current) {
+        observer.unobserve(ref.current);
+      }
+    };
+  }, []);
+
+  useEffect(() => {
+    if (!isInView) return;
+
+    let startTime: number | null = null;
+    const step = (timestamp: number) => {
+      if (!startTime) startTime = timestamp;
+      const progress = Math.min((timestamp - startTime) / duration, 1);
+      
+      setCount(Math.floor(progress * (end - start) + start));
+      
+      if (progress < 1) {
+        requestAnimationFrame(step);
+      }
+    };
+    
+    requestAnimationFrame(step);
+  }, [isInView, end, duration, start]);
+
+  return { count, ref };
+};
+
+interface StatItemProps {
+  icon: React.ReactNode;
+  value: number;
+  suffix?: string;
+  title: string;
+  description: string;
+  delay?: number;
+}
+
+const StatItem = ({ icon, value, suffix = "", title, description, delay = 0 }: StatItemProps) => {
+  const { count, ref } = useCountUp(value, 2500);
+  const [isVisible, setIsVisible] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => setIsVisible(true), delay);
+    return () => clearTimeout(timer);
+  }, [delay]);
+
+  return (
+    <div
+      ref={ref}
+      className={`group relative flex items-start gap-4 p-6 rounded-xl bg-slate-900/70 backdrop-blur-sm
+        hover:shadow-2xl hover:shadow-blue-500/20 hover:scale-105 hover:bg-slate-900/80 transition-all duration-500 border border-slate-700/50
+        ${isVisible ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-8'}`}
+      style={{ transitionDelay: `${delay}ms` }}
+    >
+      {/* Icon with animated background */}
+      <div className="relative">
+        <div className="absolute inset-0 bg-yellow-400/30 rounded-full blur-xl group-hover:blur-2xl transition-all duration-500"></div>
+        <div className="relative bg-gradient-to-br from-yellow-400 to-orange-500 p-3 rounded-lg shadow-lg group-hover:shadow-2xl group-hover:rotate-6 transition-all duration-500">
+          {icon}
+        </div>
+      </div>
+      
+      <div className="flex-1">
+        <h3 className="text-4xl md:text-5xl font-extrabold bg-gradient-to-r from-yellow-400 via-orange-400 to-yellow-400 bg-clip-text text-transparent mb-1">
+          {count}{suffix}
+        </h3>
+        <p className="text-sm md:text-base font-bold text-gray-200 mb-1">{title}</p>
+        <p className="text-xs md:text-sm text-gray-400 leading-relaxed">{description}</p>
+      </div>
+
+      {/* Decorative corner accent */}
+      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
+    </div>
+  );
+};
+
+export default function AboutStatsSection() {
   const stats = [
     {
-      icon: Building2,
-      value: "14",
-      label: "Years of dedicated service",
+      icon: <Building2 className="w-6 h-6 md:w-7 md:h-7 text-white" />,
+      value: 14,
+      suffix: "+",
+      title: "Years of dedicated service",
       description: "is a remarkable milestone worth celebrating.",
-      color: "blue",
-      delay: 0.1,
     },
     {
-      icon: FileText,
-      value: "1020",
-      label: "We have accomplished",
+      icon: <Layers className="w-6 h-6 md:w-7 md:h-7 text-white" />,
+      value: 1020,
+      suffix: "+",
+      title: "We have accomplished",
       description: "a remarkable Projects under OneRoof!",
-      color: "purple",
-      delay: 0.2,
     },
     {
-      icon: Users,
-      value: "453",
-      label: "Clients entrusting",
-      description: "their partnership with us",
-      color: "emerald",
-      delay: 0.3,
+      icon: <Users2 className="w-6 h-6 md:w-7 md:h-7 text-white" />,
+      value: 453,
+      suffix: "+",
+      title: "Clients entrusting their",
+      description: "partnership with us",
     },
     {
-      icon: Hammer,
-      value: "15",
-      label: "Hard Workers",
+      icon: <Briefcase className="w-6 h-6 md:w-7 md:h-7 text-white" />,
+      value: 15,
+      suffix: "+",
+      title: "Hard Workers",
       description: "delivers precision, innovation, and quality products.",
-      color: "yellow",
-      delay: 0.4,
     },
   ];
 
-  const getColorClasses = (color: string) => {
-    const colors = {
-      blue: {
-        bg: "from-blue-500 to-blue-600",
-        light: "bg-blue-500/10",
-        text: "text-blue-400",
-        border: "border-blue-500/20",
-        glow: "group-hover:shadow-blue-500/30",
-      },
-      purple: {
-        bg: "from-purple-500 to-purple-600",
-        light: "bg-purple-500/10",
-        text: "text-purple-400",
-        border: "border-purple-500/20",
-        glow: "group-hover:shadow-purple-500/30",
-      },
-      emerald: {
-        bg: "from-emerald-500 to-emerald-600",
-        light: "bg-emerald-500/10",
-        text: "text-emerald-400",
-        border: "border-emerald-500/20",
-        glow: "group-hover:shadow-emerald-500/30",
-      },
-      yellow: {
-        bg: "from-yellow-500 to-yellow-600",
-        light: "bg-yellow-500/10",
-        text: "text-yellow-400",
-        border: "border-yellow-500/20",
-        glow: "group-hover:shadow-yellow-500/30",
-      },
-    };
-    return colors[color as keyof typeof colors] || colors.blue;
-  };
-
   return (
-    <motion.section
-      id="stats"
-      className="relative py-20 overflow-hidden bg-gradient-to-br from-slate-900 via-gray-900 to-slate-800"
-      initial={{ opacity: 0 }}
-      whileInView={{ opacity: 1 }}
-      viewport={{ once: true }}
-      transition={{ duration: 0.8 }}
-    >
-      {/* Background Decorative Elements */}
-      <div className="absolute inset-0 overflow-hidden pointer-events-none">
-        {/* Floating Geometric Shapes */}
-        {[...Array(5)].map((_, i) => (
-          <motion.div
-            key={i}
-            className="absolute w-20 h-20 rounded-full bg-gradient-to-br from-blue-500/20 to-purple-500/20 backdrop-blur-sm"
-            style={{
-              left: `${Math.random() * 100}%`,
-              top: `${Math.random() * 100}%`,
-            }}
-            animate={{
-              y: [0, -20, 0],
-              x: [0, 10, 0],
-              scale: [1, 1.1, 1],
-            }}
-            transition={{
-              duration: 4 + Math.random() * 2,
-              repeat: Infinity,
-              delay: Math.random() * 2,
-            }}
-          />
-        ))}
-
-        {/* Grid Pattern */}
-        <div className="absolute inset-0 opacity-5">
-          <svg className="w-full h-full" viewBox="0 0 100 100" preserveAspectRatio="none">
-            <defs>
-              <pattern id="stats-grid" width="10" height="10" patternUnits="userSpaceOnUse">
-                <path d="M 10 0 L 0 0 0 10" fill="none" stroke="currentColor" strokeWidth="0.5" />
-              </pattern>
-            </defs>
-            <rect width="100" height="100" fill="url(#stats-grid)" className="text-blue-400" />
-          </svg>
-        </div>
-      </div>
-
-      <div className="relative z-10 container mx-auto px-4">
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-          {/* Left Side - Image/Visual */}
-          <motion.div
-            initial={{ opacity: 0, x: -50 }}
-            whileInView={{ opacity: 1, x: 0 }}
-            viewport={{ once: true }}
-            transition={{ duration: 0.8 }}
-            className="relative"
-          >
+    <section className="relative bg-[url('/images/stats-bg.jpg')] bg-cover bg-center py-16 md:py-24 lg:py-28 px-6 md:px-12 lg:px-20 overflow-hidden">
+      {/* Dark overlay to make content readable */}
+      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/85 via-slate-800/80 to-slate-900/85"></div>
+      
+      {/* Decorative background elements */}
+      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
+      <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
+      
+      <div className="container mx-auto relative z-10">
+        <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
+          {/* Left Image */}
+          <div className="w-full lg:w-1/2 flex justify-center">
             <div className="relative group">
-              <div className="absolute -inset-1 bg-gradient-to-r from-blue-500 via-purple-500 to-emerald-500 rounded-2xl blur-lg opacity-25 group-hover:opacity-50 transition duration-1000"></div>
-              <div className="relative bg-gradient-to-br from-gray-800/90 to-gray-900/90 backdrop-blur-sm p-8 rounded-2xl border border-white/10">
-                <motion.div
-                  className="flex items-center gap-3 mb-6"
-                  initial={{ opacity: 0, y: 20 }}
-                  whileInView={{ opacity: 1, y: 0 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 }}
-                >
-                  <TrendingUp className="w-8 h-8 text-yellow-400" />
-                  <h3 className="text-3xl font-bold bg-gradient-to-r from-white via-blue-200 to-purple-300 bg-clip-text text-transparent">
-                    Excellence in Numbers
-                  </h3>
-                </motion.div>
-
-                <motion.h4
-                  className="text-2xl font-bold text-white mb-4"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.3 }}
-                >
-                  We are honored to serve high-quality and distinguished products.
-                </motion.h4>
-
-                <motion.p
-                  className="text-lg text-gray-300 leading-relaxed"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.4 }}
-                >
-                  We are delighted to provide you with outstanding products that not only meet the highest quality standards but also elevate your experience. Our commitment to excellence is what sets us apart, and we invite you to discover the difference for yourself!
-                </motion.p>
-
-                <motion.div
-                  className="w-32 h-1 bg-gradient-to-r from-blue-500 to-purple-500 mt-6 rounded-full"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: 128 }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.5 }}
+              {/* Animated glow effect */}
+              <div className="absolute inset-0 bg-gradient-to-r from-blue-500/30 to-yellow-500/30 rounded-3xl blur-2xl group-hover:blur-3xl transition-all duration-700"></div>
+              <div className="relative transform group-hover:scale-105 transition-transform duration-500">
+                <Image
+                  src="/images/stats-img.png"
+                  alt="Team illustration"
+                  width={600}
+                  height={500}
+                  className="object-contain drop-shadow-2xl"
+                  priority
                 />
               </div>
             </div>
-          </motion.div>
+          </div>
 
-          {/* Right Side - Stats Grid */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {stats.map((stat, index) => {
-              const IconComponent = stat.icon;
-              const colors = getColorClasses(stat.color);
+          {/* Right Content */}
+          <div className="w-full lg:w-1/2 space-y-8 text-center lg:text-left">
+            <div className="space-y-4">
+              <div className="inline-block">
+                <span className="inline-flex items-center gap-2 px-4 py-2 bg-gradient-to-r from-yellow-500 to-orange-500 text-slate-900 text-sm font-semibold rounded-full shadow-lg">
+                  <span className="w-2 h-2 bg-gradient-to-r from-sky-400 to-blue-500 rounded-full animate-pulse"></span>
+                  Our Achievements
+                </span>
+              </div>
+              
+              <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-transparent bg-clip-text bg-gradient-to-r from-white via-gray-200 to-white leading-tight">
+                We are honored to serve high-quality and distinguished products.
+              </h2>
+            </div>
 
-              return (
-                <motion.div
+            <p className="text-base md:text-lg text-gray-300 leading-relaxed max-w-2xl">
+              We are delighted to provide you with outstanding products that not only meet 
+              the highest quality standards but also elevate your experience. Our commitment 
+              to excellence is what sets us apart, and we invite you to discover the 
+              difference for yourself!
+            </p>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-6 mt-12 pt-8">
+              {stats.map((stat, index) => (
+                <StatItem
                   key={index}
-                  className="group"
-                  initial={{ opacity: 0, y: 30, scale: 0.9 }}
-                  whileInView={{ opacity: 1, y: 0, scale: 1 }}
-                  viewport={{ once: true }}
-                  transition={{
-                    delay: stat.delay,
-                    duration: 0.6,
-                    type: "spring",
-                    stiffness: 100,
-                  }}
-                  whileHover={{ y: -8, scale: 1.02 }}
-                >
-                  <div
-                    className={`relative bg-gray-800/50 backdrop-blur-sm p-6 rounded-2xl shadow-xl hover:shadow-2xl ${colors.glow} transition-all duration-500 border ${colors.border} overflow-hidden h-full`}
-                  >
-                    {/* Background Pattern */}
-                    <div className="absolute top-0 right-0 w-24 h-24 opacity-10">
-                      <div className={`w-full h-full bg-gradient-to-br ${colors.bg} rounded-full transform translate-x-12 -translate-y-12`} />
-                    </div>
-
-                    {/* Icon */}
-                    <motion.div
-                      className={`relative w-16 h-16 ${colors.light} rounded-xl flex items-center justify-center mb-4 shadow-lg border ${colors.border}`}
-                      whileHover={{ scale: 1.1, rotate: 5 }}
-                      transition={{ type: "spring", stiffness: 300 }}
-                    >
-                      <IconComponent className={`w-8 h-8 ${colors.text} group-hover:text-white transition-colors duration-300`} />
-                    </motion.div>
-
-                    {/* Value */}
-                    <motion.div
-                      className={`text-5xl font-bold mb-3 bg-gradient-to-r ${colors.bg} bg-clip-text text-transparent`}
-                      initial={{ scale: 0 }}
-                      whileInView={{ scale: 1 }}
-                      viewport={{ once: true }}
-                      transition={{ delay: stat.delay + 0.2, type: "spring", stiffness: 200 }}
-                    >
-                      {stat.value}+
-                    </motion.div>
-
-                    {/* Label and Description */}
-                    <div className="relative">
-                      <h4 className="text-lg font-bold text-white mb-2 group-hover:text-blue-300 transition-colors duration-300">
-                        {stat.label}
-                      </h4>
-                      <p className="text-sm text-gray-400 leading-relaxed">
-                        {stat.description}
-                      </p>
-                    </div>
-
-                    {/* Hover Effect Line */}
-                    <motion.div
-                      className={`absolute bottom-0 left-0 right-0 h-1 bg-gradient-to-r ${colors.bg}`}
-                      initial={{ scaleX: 0 }}
-                      whileHover={{ scaleX: 1 }}
-                      transition={{ duration: 0.3 }}
-                    />
-                  </div>
-                </motion.div>
-              );
-            })}
+                  icon={stat.icon}
+                  value={stat.value}
+                  suffix={stat.suffix}
+                  title={stat.title}
+                  description={stat.description}
+                  delay={index * 150}
+                />
+              ))}
+            </div>
           </div>
         </div>
       </div>
-    </motion.section>
+    </section>
   );
 }

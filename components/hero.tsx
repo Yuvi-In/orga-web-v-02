@@ -33,7 +33,7 @@ export default function Hero() {
   ];
 
   return (
-    <section className="relative flex h-screen flex-col items-center justify-center bg-gray-950/70 bg-[url('/hero-bg.jpg')] bg-cover bg-center bg-no-repeat text-center bg-blend-overlay">
+    <section className="relative flex h-screen flex-col items-center justify-center bg-gray-950/70 bg-[url('/images/hero-bg.jpg')] bg-cover bg-center bg-no-repeat text-center bg-blend-overlay">
       {/* Hero Content */}
       <div className="container mx-auto mb-4 flex max-w-5xl flex-col items-center justify-center px-4 pt-10 text-center lg:mb-6">
         <div className="max-w-4xl">
@@ -41,8 +41,18 @@ export default function Hero() {
             We are the Pioneer of Production based <br />
             Laser Cutting, CNC
             <br /> &amp; <br />
-            <span className="text-yellow-300 transition-colors duration-300 ease-in-out hover:text-green-300">
-              Manufacturing <br /> Hologram Labels
+            <span className="inline-flex flex-wrap justify-center gap-x-2">
+              <span className="text-yellow-300 transition-all duration-300 ease-in-out hover:text-green-300 hover:drop-shadow-[0_0_15px_rgba(34,197,94,0.8)]">
+                Manufacturing
+              </span>
+              <br className="w-full" />
+              <span className="text-yellow-300 transition-all duration-300 ease-in-out hover:text-purple-300 hover:drop-shadow-[0_0_15px_rgba(168,85,247,0.8)]">
+                Hologram
+              </span>
+              {" "}
+              <span className="text-yellow-300 transition-all duration-300 ease-in-out hover:text-blue-300 hover:drop-shadow-[0_0_15px_rgba(59,130,246,0.8)]">
+                Labels
+              </span>
             </span>
           </h1>
 

@@ -82,7 +82,7 @@ export default function Footer() {
   return (
     <footer
       id="footer"
-      className="relative bg-gray-950/80 bg-[url('/footer-bg.jpg')] bg-cover bg-center bg-no-repeat text-white bg-blend-overlay"
+      className="relative bg-gray-950/80 bg-[url('/images/footer-bg.jpg')] bg-cover bg-center bg-no-repeat text-white bg-blend-overlay"
     >
       <div className="absolute inset-0 bg-gradient-to-t from-gray-950 via-gray-950/95 to-gray-950/80"></div>
 
@@ -94,10 +94,10 @@ export default function Footer() {
         viewport={{ once: true, amount: 0.2 }}
       >
         <div className="container mx-auto px-4">
-          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-4">
+          <div className="grid grid-cols-1 gap-8 md:grid-cols-2 lg:grid-cols-3">
             {/* Company Info */}
             <motion.div
-              className="footer-about lg:col-span-1"
+              className="footer-about"
               variants={itemVariants}
             >
               <Link
@@ -110,7 +110,7 @@ export default function Footer() {
                   transition={{ type: "spring", stiffness: 300, damping: 20 }}
                 >
                   <Image
-                    src="/logo.png"
+                    src="/images/logo.png"
                     alt="Orgalaser Logo"
                     width={48}
                     height={48}
@@ -176,7 +176,7 @@ export default function Footer() {
             {/* Useful Links */}
             <motion.div className="footer-links" variants={itemVariants}>
               <h4 className="mb-6 text-xl font-semibold text-yellow-300">
-                Useful Links
+                Main Links
               </h4>
               <ul className="space-y-3">
                 {usefulLinks.map((link, index) => (
@@ -225,39 +225,6 @@ export default function Footer() {
                   </motion.li>
                 ))}
               </ul>
-            </motion.div>
-
-            {/* Newsletter */}
-            <motion.div className="footer-newsletter" variants={itemVariants}>
-              <h4 className="mb-6 text-xl font-semibold text-blue-300">
-                Our Newsletter
-              </h4>
-              <p className="mb-6 text-gray-300">
-                Subscribe to our newsletter and receive the latest news about
-                our products and services!
-              </p>
-
-              <form className="space-y-4" aria-label="Newsletter form">
-                <div className="relative">
-                  <input
-                    type="email"
-                    name="email"
-                    placeholder="Your email address"
-                    required
-                    aria-label="Email address"
-                    className="w-full rounded-xl border border-white/20 bg-white/5 px-4 py-3 text-white placeholder-gray-400 backdrop-blur-sm transition-all duration-300 focus:border-blue-400/50 focus:bg-white/10 focus:outline-none focus:ring-2 focus:ring-blue-400/20"
-                  />
-                </div>
-                <motion.button
-                  type="submit"
-                  className="w-full rounded-xl bg-gradient-to-r from-blue-500 to-blue-600 px-4 py-3 font-semibold text-white shadow-lg transition-all duration-300 hover:from-blue-600 hover:to-blue-700 hover:shadow-blue-500/25 focus:outline-none focus:ring-2 focus:ring-blue-400/50"
-                  whileHover={{ scale: 1.02, y: -1 }}
-                  whileTap={{ scale: 0.98 }}
-                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                >
-                  Subscribe
-                </motion.button>
-              </form>
             </motion.div>
           </div>
         </div>

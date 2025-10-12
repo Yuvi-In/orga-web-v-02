@@ -61,7 +61,7 @@ export default function Flip() {
         </motion.span>
       </motion.h3>
 
-      <div className="mt-16 grid grid-cols-1 gap-4 text-center md:grid-cols-2 lg:grid-cols-1 lg:gap-8">
+      <div className="mt-16 grid grid-cols-1 gap-4 text-center lg:grid-cols-1 lg:gap-8">
         <motion.div
           className="relative cursor-pointer rounded-2xl border border-white/10 bg-gradient-to-tr from-yellow-300/20 to-gray-950/20 backdrop-blur-sm min-h-[300px] lg:min-h-[400px]"
           style={{

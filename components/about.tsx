@@ -152,7 +152,7 @@ export default function About() {
   return (
     <section
       id="about"
-      className="relative flex min-h-screen flex-col items-center justify-center bg-gray-950/80 bg-[url('/about-bg.jpg')] bg-cover bg-center bg-no-repeat text-white bg-blend-overlay"
+      className="relative flex min-h-screen flex-col items-center justify-center bg-gray-950/80 bg-[url('/images/about-bg.jpg')] bg-cover bg-center bg-no-repeat text-white bg-blend-overlay"
     >
       <div className="container mx-auto px-4 py-28 lg:py-28">
         {/* Header Section */}
