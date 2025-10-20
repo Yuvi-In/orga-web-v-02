@@ -93,9 +93,6 @@ const StatItem = ({ icon, value, suffix = "", title, description, delay = 0 }: S
         <p className="text-sm md:text-base font-bold text-gray-200 mb-1">{title}</p>
         <p className="text-xs md:text-sm text-gray-400 leading-relaxed">{description}</p>
       </div>
-
-      {/* Decorative corner accent */}
-      <div className="absolute top-0 right-0 w-20 h-20 bg-gradient-to-br from-yellow-400/20 to-transparent rounded-bl-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"></div>
     </div>
   );
 };
@@ -134,12 +131,6 @@ export default function AboutStatsSection() {
 
   return (
     <section className="relative bg-[url('/images/stats-bg.jpg')] bg-cover bg-center py-16 md:py-24 lg:py-28 px-6 md:px-12 lg:px-20 overflow-hidden">
-      {/* Dark overlay to make content readable */}
-      <div className="absolute inset-0 bg-gradient-to-br from-slate-900/85 via-slate-800/80 to-slate-900/85"></div>
-      
-      {/* Decorative background elements */}
-      <div className="absolute top-0 left-0 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl -translate-x-1/2 -translate-y-1/2"></div>
-      <div className="absolute bottom-0 right-0 w-96 h-96 bg-yellow-500/10 rounded-full blur-3xl translate-x-1/2 translate-y-1/2"></div>
       
       <div className="container mx-auto relative z-10">
         <div className="flex flex-col-reverse lg:flex-row items-center gap-12 lg:gap-16">
