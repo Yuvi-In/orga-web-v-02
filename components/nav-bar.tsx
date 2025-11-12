@@ -1,11 +1,11 @@
 "use client";
 
-import Link from "next/link";
+import Link, { type LinkProps } from "next/link";
 import Image from "next/image";
 import { useState } from "react";
 import { MenuButton, CloseButton, ReqButton } from "./Buttons";
 
-type NavItem = { id: string; label: string; href?: string }; // adjust fields to your data
+type NavItem = { id: string; label: string; href?: LinkProps<string>["href"] }; // href typed from next/link
 
 export default function NavBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -69,10 +69,9 @@ export default function NavBar() {
                   key={item.id}
                   className="flex items-center gap-x-2 p-1 text-lg text-white hover:text-yellow-300"
                 >
-                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                   <Link
                     onClick={() => setIsMobileMenuOpen(false)}
-                    href={item.href as any}
+                    href={(item.href ?? "/") as LinkProps<string>["href"]}
                     className="flex items-center"
                   >
                     {item.label}
@@ -93,8 +92,7 @@ export default function NavBar() {
                   key={item.id}
                   className="text-md text-white hover:text-yellow-300"
                 >
-                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
-                  <Link href={item.href as any}>{item.label}</Link>
+                  <Link href={(item.href ?? "/") as LinkProps<string>["href"]}>{item.label}</Link>
                 </li>
               ))}
             </ul>

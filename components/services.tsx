@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
-import { Zap, PenTool, Shield, ChevronRight, Star, ArrowUpRight } from 'lucide-react'
+import { Zap, PenTool, Shield, Star, ArrowUpRight } from 'lucide-react'
+import Image from 'next/image'
 
 export default function Services() {
     const services = [
@@ -73,11 +74,12 @@ export default function Services() {
             {/* Background Decorative Elements */}
             <div className="absolute inset-0 overflow-hidden pointer-events-none">
                 {/* Background Image with Overlay */}
-                <div className="absolute inset-0">
-                    <img 
-                        src="/images/service-bg.gif" 
-                        className="w-full h-full object-cover opacity-90" 
-                        alt="Services Background" 
+                <div className="absolute inset-0 relative">
+                    <Image
+                        src="/images/service-bg.gif"
+                        alt="Services Background"
+                        fill
+                        className="object-cover opacity-90"
                     />
                     <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-gray-900/90 to-slate-800/95"></div>
                 </div>

@@ -1,5 +1,6 @@
 import { motion } from "framer-motion"
 import { ArrowRight, ExternalLink, Sparkles, Zap } from 'lucide-react'
+import Image from 'next/image'
 
 export default function CallTo() {
     return (
@@ -11,11 +12,12 @@ export default function CallTo() {
             transition={{ duration: 0.8 }}
         >
             {/* Enhanced Background with Multiple Layers */}
-            <div className="absolute inset-0">
-                <img 
-                    src="/images/about.gif" 
-                    className="w-full h-full object-cover opacity-40" 
-                    alt="Background" 
+            <div className="absolute inset-0 relative">
+                <Image
+                    src="/images/about.gif"
+                    alt="Background"
+                    fill
+                    className="object-cover opacity-40"
                 />
                 <div className="absolute inset-0 bg-gradient-to-br from-slate-900/95 via-blue-900/80 to-indigo-900/95"></div>
                 
@@ -219,16 +221,14 @@ export default function CallTo() {
                                             className="group relative flex-shrink-0 w-40 h-24 flex items-center justify-center"
                                         >
                                             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                            <img
-                                                src={client.logo}
-                                                alt={client.name}
-                                                className="relative z-10 w-full h-full object-contain filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-                                                onError={(e) => {
-                                                    e.currentTarget.style.display = 'none';
-                                                    const fallback = e.currentTarget.parentElement?.querySelector('.fallback');
-                                                    if (fallback) fallback.classList.remove('hidden');
-                                                }}
-                                            />
+                                            <div className="relative z-10 w-full h-full">
+                                                <Image
+                                                    src={client.logo}
+                                                    alt={client.name}
+                                                    fill
+                                                    className="object-contain filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                                                />
+                                            </div>
                                             <div className="fallback hidden relative z-10 w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-900/50 to-cyan-900/50 rounded-lg border border-blue-700/30 backdrop-blur-sm">
                                                 <span className="text-blue-300 font-semibold text-sm">{client.name}</span>
                                             </div>
@@ -268,16 +268,17 @@ export default function CallTo() {
                                             className="group relative flex-shrink-0 w-40 h-24 flex items-center justify-center"
                                         >
                                             <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 to-cyan-500/5 rounded-lg opacity-0 group-hover:opacity-100 transition-opacity duration-300"></div>
-                                            <img
-                                                src={client.logo}
-                                                alt={client.name}
-                                                className="relative z-10 w-full h-full object-contain filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
-                                                onError={(e) => {
-                                                    e.currentTarget.style.display = 'none';
-                                                    const fallback = e.currentTarget.parentElement?.querySelector('.fallback');
-                                                    if (fallback) fallback.classList.remove('hidden');
-                                                }}
-                                            />
+                                            <div className="relative z-10 w-full h-full">
+                                                <Image
+                                                    src={client.logo}
+                                                    alt={client.name}
+                                                    fill
+                                                    className="object-contain filter grayscale opacity-50 group-hover:grayscale-0 group-hover:opacity-100 transition-all duration-300"
+                                                    onError={() => {
+                                                        /* next/image doesn't support onError in the same way as img; leave fallback element present */
+                                                    }}
+                                                />
+                                            </div>
                                             <div className="fallback hidden relative z-10 w-full h-full flex items-center justify-center bg-gradient-to-br from-blue-900/50 to-cyan-900/50 rounded-lg border border-blue-700/30 backdrop-blur-sm">
                                                 <span className="text-blue-300 font-semibold text-sm">{client.name}</span>
                                             </div>

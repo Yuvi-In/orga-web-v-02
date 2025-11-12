@@ -1,6 +1,7 @@
 import { motion } from "framer-motion";
 import { useState } from "react";
 import { ExternalLink, Eye } from "lucide-react";
+import Image from 'next/image';
 
 export default function Portfolio() {
   const [activeFilter, setActiveFilter] = useState("*");
@@ -104,11 +105,12 @@ export default function Portfolio() {
       transition={{ duration: 0.8 }}
     >
       {/* Background Image with Overlay */}
-      <div className="absolute inset-0">
-        <img
+      <div className="absolute inset-0 relative">
+        <Image
           src="/images/portfolio-bg.jpg"
-          className="w-full h-full object-cover opacity-50"
           alt="Portfolio Background"
+          fill
+          className="object-cover opacity-50"
         />
         <div className="absolute inset-0 bg-gradient-to-br from-gray-900/90 via-gray-800/80 to-slate-900/90"></div>
       </div>
@@ -214,11 +216,12 @@ export default function Portfolio() {
                 whileHover={{ y: -8, scale: 1.02 }}
               >
                 {/* Image Container */}
-                <div className="relative overflow-hidden">
-                  <img
+                <div className="relative overflow-hidden h-64">
+                  <Image
                     src={item.image}
                     alt={item.title}
-                    className="w-full h-64 object-cover transition-transform duration-500 group-hover:scale-110"
+                    fill
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
 
                   {/* Gradient Overlay */}
