@@ -1,7 +1,7 @@
 "use client";
 
 import { motion } from "framer-motion";
-import { useState } from "react";
+// no react hooks needed
 import { Calendar } from "lucide-react";
 import Flip from "./flip";
 
@@ -150,8 +150,6 @@ const visionVariants = {
 };
 
 export default function About() {
-  const [isFlipped, setIsFlipped] = useState(false);
-  
   return (
     <section
       id="about"
@@ -208,7 +206,7 @@ export default function About() {
               </motion.span>{" "}
               specializes in laser cutting, CNC machining, and hologram labels
               in Sri Lanka. We deliver high-quality, precise solutions tailored
-              to our clients' needs, backed by exceptional customer service.
+              to our clients&apos; needs, backed by exceptional customer service.
               Experience innovation and creativity with Orgalaser.
             </p>
           </motion.div>

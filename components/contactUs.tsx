@@ -266,7 +266,7 @@ export default function ContactUs() {
 								className="mb-3 sm:mb-4 text-3xl sm:text-4xl font-bold md:text-5xl"
 								variants={titleVariants}
 							>
-								Let's{" "}
+								Let&apos;s{" "}
 								<motion.span
 									className="text-yellow-300"
 									initial={{ opacity: 0, scale: 0.5 }}
@@ -436,7 +436,7 @@ export default function ContactUs() {
 										animate={{ opacity: 1, scale: 1 }}
 										className="text-center text-xs sm:text-sm text-green-400 bg-green-400/10 border border-green-400/20 rounded-lg sm:rounded-xl py-2 sm:py-3"
 									>
-										✓ Your message has been sent successfully! We'll get back to you soon.
+										✓ Your message has been sent successfully! We&apos;ll get back to you soon.
 									</motion.div>
 								)}
 

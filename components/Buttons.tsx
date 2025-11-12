@@ -40,8 +40,11 @@ export function CloseButton() {
 
 export function ReqButton() {
   return (
-    <button className="btn btn-primary w-full rounded-full border-2 border-yellow-300 bg-gradient-to-bl from-yellow-300/60 to-sky-400/60 px-4 py-2 text-white duration-300 ease-in-out hover:bg-gradient-to-br hover:from-yellow-400 hover:to-red-500 hover:text-sky-100 hover:opacity-100 hover:transition">
-      <Link href="/#contact">Request a Quote</Link>
-    </button>
+    <Link
+      href="/#contact"
+      className="btn btn-primary w-full rounded-full border-2 border-yellow-300 bg-gradient-to-bl from-yellow-300/60 to-sky-400/60 px-4 py-2 text-white duration-300 ease-in-out hover:bg-gradient-to-br hover:from-yellow-400 hover:to-red-500 hover:text-sky-100 hover:opacity-100 hover:transition"
+    >
+      Request a Quote
+    </Link>
   );
 }

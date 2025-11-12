@@ -140,9 +140,9 @@ export default function Flip() {
                   }}
                   transition={{ delay: isFlipped ? 0.6 : 0, duration: 0.6 }}
                 >
-                  To be Sri Lanka's leading provider of precision manufacturing
+                  To be Sri Lanka&apos;s leading provider of precision manufacturing
                   solutions, combining cutting-edge technology with exceptional
-                  craftsmanship to exceed our clients' expectations.
+                  craftsmanship to exceed our clients&apos; expectations.
                 </motion.p>
 
                 <motion.p

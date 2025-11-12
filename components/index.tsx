@@ -1,7 +1,5 @@
 "use client";
 import { useEffect } from "react";
-import Image from "next/image";
-import Link from "next/link";
 import Hero from "./hero";
 import About from "./about";
 import Outcomes from "./outcomes";

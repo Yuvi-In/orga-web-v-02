@@ -69,6 +69,7 @@ export default function NavBar() {
                   key={item.id}
                   className="flex items-center gap-x-2 p-1 text-lg text-white hover:text-yellow-300"
                 >
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                   <Link
                     onClick={() => setIsMobileMenuOpen(false)}
                     href={item.href as any}
@@ -92,6 +93,7 @@ export default function NavBar() {
                   key={item.id}
                   className="text-md text-white hover:text-yellow-300"
                 >
+                  {/* eslint-disable-next-line @typescript-eslint/no-explicit-any */}
                   <Link href={item.href as any}>{item.label}</Link>
                 </li>
               ))}
