@@ -5,16 +5,18 @@ import Image from "next/image";
 import { useState } from "react";
 import { MenuButton, CloseButton, ReqButton } from "./Buttons";
 
+type NavItem = { id: string; label: string; href?: string }; // adjust fields to your data
+
 export default function NavBar() {
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const toggleMobileMenu = () => setIsMobileMenuOpen(!isMobileMenuOpen);
 
-  const navItems = [
-    { name: "Home", href: "/#hero" },
-    { name: "About", href: "/#about" },
-    { name: "Portfolio", href: "/#portfolio" },
-    { name: "Services", href: "/#services" },
-    { name: "Contact", href: "/#contact" },
+  const navItems: NavItem[] = [
+    { id: "1", label: "Home", href: "/#hero" },
+    { id: "2", label: "About", href: "/#about" },
+    { id: "3", label: "Portfolio", href: "/#portfolio" },
+    { id: "4", label: "Services", href: "/#services" },
+    { id: "5", label: "Contact", href: "/#contact" },
   ];
 
   return (
@@ -62,9 +64,9 @@ export default function NavBar() {
               <CloseButton />
             </button>
             <ul className="flex h-full flex-col gap-4 p-8">
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <li
-                  key={index}
+                  key={item.id}
                   className="flex items-center gap-x-2 p-1 text-lg text-white hover:text-yellow-300"
                 >
                   <Link
@@ -72,7 +74,7 @@ export default function NavBar() {
                     href={item.href as any}
                     className="flex items-center"
                   >
-                    {item.name}
+                    {item.label}
                   </Link>
                 </li>
               ))}
@@ -85,12 +87,12 @@ export default function NavBar() {
           {/* Desktop Menu */}
           <div className="hidden lg:flex lg:items-center lg:gap-6">
             <ul className="flex gap-6">
-              {navItems.map((item, index) => (
+              {navItems.map((item) => (
                 <li
-                  key={index}
+                  key={item.id}
                   className="text-md text-white hover:text-yellow-300"
                 >
-                  <Link href={item.href as any}>{item.name}</Link>
+                  <Link href={item.href as any}>{item.label}</Link>
                 </li>
               ))}
             </ul>

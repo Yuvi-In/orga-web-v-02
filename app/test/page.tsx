@@ -1,4 +1,3 @@
-import Test from "@/components/flip";
 import MilestoneRoadmap from "@/components/test";
 
 export default function Page() {
@@ -7,4 +6,4 @@ export default function Page() {
         <MilestoneRoadmap />
       </div>
     );
-}  
+}

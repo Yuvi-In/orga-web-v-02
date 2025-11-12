@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 export function MenuButton() {
   return (
     <span className="absolute left-1/2 top-1/2 -translate-x-1/2 -translate-y-1/2 transform text-white hover:text-yellow-300">
@@ -39,7 +41,7 @@ export function CloseButton() {
 export function ReqButton() {
   return (
     <button className="btn btn-primary w-full rounded-full border-2 border-yellow-300 bg-gradient-to-bl from-yellow-300/60 to-sky-400/60 px-4 py-2 text-white duration-300 ease-in-out hover:bg-gradient-to-br hover:from-yellow-400 hover:to-red-500 hover:text-sky-100 hover:opacity-100 hover:transition">
-      <a href="/#contact">Request a Quote</a>
+      <Link href="/#contact">Request a Quote</Link>
     </button>
   );
 }
