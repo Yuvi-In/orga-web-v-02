@@ -1,9 +1,18 @@
 import "@/styles/globals.css";
+
 import { cn } from "@/styles/utils";
+
 import type { Metadata, Viewport } from "next";
+
 import Footer from "@/components/footer";
+
 import Header from "@/components/header";
+
 import { Poppins } from "next/font/google";
+
+import { Analytics } from "@vercel/analytics/next"
+
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 const poppins = Poppins({
   subsets: ["latin"],
@@ -51,11 +60,9 @@ export default function RootLayout({
           rel="stylesheet"
           href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.11.2/font/bootstrap-icons.css"
         />
+        <Analytics />
+        <SpeedInsights />
       </head>
-      {/* 
-        suppressHydrationWarning is intentionally set on <body> to prevent hydration mismatch warnings 
-        due to differences between server and client rendering (e.g., dynamic font loading or theming).
-      */}
       <body className={cn(poppins.className)} suppressHydrationWarning>
         <Header />
         {children}
